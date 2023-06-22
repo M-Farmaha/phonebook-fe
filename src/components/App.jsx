@@ -1,15 +1,15 @@
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Layout } from './Layout';
 import { ErrorPage } from 'pages/ErrorPage';
-import LoginPage from 'pages/LoginPage';
-import RegisterPage from 'pages/RegisterPage';
-import ContactsPage from 'pages/ContactsPage';
+// import LoginPage from 'pages/LoginPage';
+// import RegisterPage from 'pages/RegisterPage';
+// import ContactsPage from 'pages/ContactsPage';
 
-// const ContactsPage = lazy(() => import('../pages/ContactsPage'));
-// const LoginPage = lazy(() => import('../pages/LoginPage'));
-// const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 
 export const App = () => {
   return (
