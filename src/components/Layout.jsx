@@ -1,4 +1,4 @@
-import { Suspense, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 
 import { AppBar } from './AppBar';
@@ -23,11 +23,9 @@ export const Layout = () => {
       <HandleRedirectContext.Provider value={handleRedirect}>
         <AppBar handleRedirect={handleRedirect} />
         <main>
-          {shoulRedirect && <BlurOverlayIn />}
-          {!shoulRedirect && <BlurOverlayOut />}
-          <Suspense fallback={<div></div>}>
-            <Outlet handleRedirect={handleRedirect} />
-          </Suspense>
+          {shoulRedirect ? <BlurOverlayIn /> : <BlurOverlayOut />}
+
+          <Outlet handleRedirect={handleRedirect} />
         </main>
       </HandleRedirectContext.Provider>
     </>

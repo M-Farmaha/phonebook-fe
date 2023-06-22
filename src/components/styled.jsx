@@ -20,7 +20,7 @@ export const BlurDiv = styled.div`
   height: 100%;
   z-index: 999;
   animation-name: ${Blur};
-  animation-duration: 400ms;
+  animation-duration: 330ms;
 `;
 
 export const Header = styled.header`
