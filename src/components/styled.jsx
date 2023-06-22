@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export const Blur = keyframes`
   0% {
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(40px);
   }
 
   100% {
@@ -20,7 +20,7 @@ export const BlurDiv = styled.div`
   height: 100%;
   z-index: 999;
   animation-name: ${Blur};
-  animation-duration: 330ms;
+  animation-duration: 400ms;
 `;
 
 export const Header = styled.header`
