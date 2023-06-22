@@ -13,19 +13,18 @@ export const Layout = () => {
   const handleRedirect = path => {
     setShoulRedirect(true);
     setTimeout(() => {
-      setShoulRedirect(false);
       navigate(path);
+      setShoulRedirect(false);
     }, 300);
   };
 
   return (
     <>
       <HandleRedirectContext.Provider value={handleRedirect}>
-        <AppBar handleRedirect={handleRedirect} />
+        <AppBar />
+        {shoulRedirect ? <BlurOverlayIn /> : <BlurOverlayOut />}
         <main>
-          {shoulRedirect ? <BlurOverlayIn /> : <BlurOverlayOut />}
-
-          <Outlet handleRedirect={handleRedirect} />
+          <Outlet />
         </main>
       </HandleRedirectContext.Provider>
     </>
