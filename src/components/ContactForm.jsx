@@ -9,21 +9,21 @@ export const ContactForm = () => {
   const [isNumberFocused, setIsNumberFocused] = useState(false);
 
   const [name, setName] = useState(
-    JSON.parse(window.localStorage.getItem('NAME')) ?? ''
+    JSON.parse(window.localStorage.getItem('contactName')) ?? ''
   );
   const [number, setNumber] = useState(
-    JSON.parse(window.localStorage.getItem('NUMBER')) ?? ''
+    JSON.parse(window.localStorage.getItem('contactNumber')) ?? ''
   );
 
   const [addContact, { isLoading, isSuccess, isError, error }] =
     useAddContactMutation();
 
   useEffect(() => {
-    window.localStorage.setItem('NAME', JSON.stringify(name));
+    window.localStorage.setItem('contactName', JSON.stringify(name));
   }, [name]);
 
   useEffect(() => {
-    window.localStorage.setItem('NUMBER', JSON.stringify(number));
+    window.localStorage.setItem('contactNumber', JSON.stringify(number));
   }, [number]);
 
   useEffect(() => {

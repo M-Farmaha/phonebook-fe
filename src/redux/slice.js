@@ -9,3 +9,13 @@ export const filterSlice = createSlice({
 });
 export const { setFilter } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
+
+export const tokenSlice = createSlice({
+  name: 'auth',
+  initialState: null,
+  reducers: {
+    setToken: (state, action) => (state = action.payload),
+  },
+});
+export const { setToken } = tokenSlice.actions;
+export const tokenReducer = tokenSlice.reducer;

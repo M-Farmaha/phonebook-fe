@@ -1,7 +1,7 @@
 import { Form, Input, Label } from './styled';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/slice';
 import { getFilter } from 'redux/selectors';
 import { useEffect, useState } from 'react';
 

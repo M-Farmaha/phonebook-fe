@@ -1,15 +1,43 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
+
+import { useDispatch } from 'react-redux';
+import { useLoginUserMutation } from 'redux/authApi';
+import { setToken } from 'redux/slice';
+
+import { ButtonAddLoader } from './Loaders';
 import { Form, Label, Input, Button } from './styled';
+import { HandleRedirectContext } from './Layout';
 
 export const LoginForm = () => {
+  const handleRedirect = useContext(HandleRedirectContext);
+
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
+  const [isLoading, setisLoading] = useState(false);
+
+  const [loginUser] = useLoginUserMutation();
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async e => {
     e.preventDefault();
+    setisLoading(true);
+    try {
+      const response = await loginUser({ email, password }).unwrap();
+      toast.success(`User "${response.user.name}", Welcome!`);
+      dispatch(setToken(response.token));
+      setEmail('');
+      setPassword('');
+      handleRedirect('/');
+    } catch (error) {
+      toast.error(`Access denied. Error: ${error.status}`);
+    }
+    setisLoading(false);
   };
 
   return (
@@ -43,23 +71,23 @@ export const LoginForm = () => {
       </Label>
       <Input
         style={{ marginBottom: '20px' }}
-        type="tel"
+        type="password"
         name="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
         onFocus={() => setIsPasswordFocused(true)}
         onBlur={() => setIsPasswordFocused(false)}
         id={'password'}
-        title="Min 6, max 20 latin letters and figures"
-        pattern="^[a-zA-Z0-9]{6,20}$"
+        title="Min 7, max 20 latin letters and figures"
+        pattern="^[a-zA-Z0-9]{7,20}$"
         required
       />
       <Button
         style={{ marginBottom: '20px' }}
         type="submit"
-        disabled={!email || !password}
+        disabled={isLoading || !email || !password}
       >
-        Sing In
+        {!isLoading ? 'Sign In' : <ButtonAddLoader />}
       </Button>
     </Form>
   );

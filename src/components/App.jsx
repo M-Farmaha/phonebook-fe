@@ -5,6 +5,8 @@ import { ErrorPage } from 'pages/ErrorPage';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
 import ContactsPage from 'pages/ContactsPage';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 export const App = () => {
   return (

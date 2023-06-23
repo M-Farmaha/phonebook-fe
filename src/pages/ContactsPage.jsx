@@ -3,15 +3,18 @@ import { Filter } from '../components/Filter';
 import { ContactList } from '../components/ContactList';
 
 import { Section } from '../components/styled';
+import { PrivateRoute } from 'components/PrivateRoute';
 
 const ContactPage = () => {
   return (
     <>
-      <Section>
-        <ContactForm />
-        <Filter />
-        <ContactList />
-      </Section>
+      <PrivateRoute>
+        <Section>
+          <ContactForm />
+          <Filter />
+          <ContactList />
+        </Section>
+      </PrivateRoute>
     </>
   );
 };

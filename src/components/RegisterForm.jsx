@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
+
+import { useCreateUserMutation } from 'redux/authApi';
+
 import { Form, Label, Input, Button } from './styled';
+import { ButtonAddLoader } from './Loaders';
+import { HandleRedirectContext } from './Layout';
 
 export const RegisterForm = () => {
+  const handleRedirect = useContext(HandleRedirectContext);
+
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -10,8 +18,24 @@ export const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
+  const [isLoading, setisLoading] = useState(false);
+
+  const [createNewUser] = useCreateUserMutation();
+
+  const handleSubmit = async e => {
     e.preventDefault();
+    setisLoading(true);
+    try {
+      const response = await createNewUser({ name, email, password }).unwrap();
+      toast.success(`User "${response.user.name}" was registered successfully`);
+      setName('');
+      setEmail('');
+      setPassword('');
+      handleRedirect('/login');
+    } catch (error) {
+      toast.error(`Wasn't registered. Error: ${error.status}`);
+    }
+    setisLoading(false);
   };
 
   return (
@@ -64,23 +88,23 @@ export const RegisterForm = () => {
       </Label>
       <Input
         style={{ marginBottom: '20px' }}
-        type="tel"
+        type="password"
         name="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
         onFocus={() => setIsPasswordFocused(true)}
         onBlur={() => setIsPasswordFocused(false)}
         id={'password'}
-        title="Min 6, max 20 latin letters or figures"
-        pattern="^[a-zA-Z0-9]{6,20}$"
+        title="Min 7, max 20 latin letters or figures"
+        pattern="^[a-zA-Z0-9]{7,20}$"
         required
       />
       <Button
         style={{ marginBottom: '20px' }}
         type="submit"
-        disabled={!name || !email || !password}
+        disabled={isLoading || !name || !email || !password}
       >
-        Sing Up
+        {!isLoading ? 'Sign Up' : <ButtonAddLoader />}
       </Button>
     </Form>
   );

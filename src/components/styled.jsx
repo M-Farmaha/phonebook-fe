@@ -24,6 +24,7 @@ export const BlurDiv = styled.div`
 `;
 
 export const Header = styled.header`
+  height: 80px;
   top: 0;
   left: 0;
   position: sticky;
@@ -34,6 +35,7 @@ export const Header = styled.header`
 `;
 
 export const NavWrap = styled.nav`
+  height: 100%;
   max-width: 480px;
   padding: 0px 20px;
   margin-left: auto;
@@ -45,17 +47,30 @@ export const NavWrap = styled.nav`
 `;
 
 export const NavList = styled.ul`
+  height: 100%;
   display: flex;
   justify-content: right;
   align-items: center;
   gap: 20px;
 `;
 
+export const NavItem = styled.li`
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+`;
+
 export const NavLinkStyled = styled(NavLink)`
-  display: block;
-  padding: 28px 0px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: auto 0px;
   color: rgb(140, 141, 180);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
 

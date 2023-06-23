@@ -13,23 +13,23 @@ export const ContactList = () => {
   const filter = useSelector(getFilter);
   const { data, isLoading, error, isError } = useGetContactsQuery();
 
-  useEffect(() => {
-    isError && toast.error(`Wasn't loaded. Status: ${error.status}`);
-  }, [error, isError]);
+  // useEffect(() => {
+  //   isError && toast.error(`Wasn't loaded. Status: ${error.status}`);
+  // }, [error, isError]);
 
   const visibleContacts = data?.filter(contact =>
     contact.name.toLowerCase().includes(filter)
   );
 
-  return isLoading ? (
-    <ContactsLoader />
-  ) : (
-    visibleContacts.length !== 0 && (
-      <ContactListWrap>
-        {visibleContacts.map(contact => (
-          <ContactItem key={contact.id} contact={contact} />
-        ))}
-      </ContactListWrap>
-    )
-  );
+  // return isLoading ? (
+  //   <ContactsLoader />
+  // ) : (
+  //   visibleContacts.length !== 0 && (
+  //     <ContactListWrap>
+  //       {visibleContacts.map(contact => (
+  //         <ContactItem key={contact.id} contact={contact} />
+  //       ))}
+  //     </ContactListWrap>
+  //   )
+  // );
 };
