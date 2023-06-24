@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { LinkStyled, Section } from '../components/styled';
 import { LoginForm } from 'components/LoginForm';
-import { HandleRedirectContext } from 'components/Layout';
+import { RedirectContext } from 'components/Layout';
+import { PublicRoute } from 'components/PublicRoute';
 
 const LoginPage = () => {
-  const handleRedirect = useContext(HandleRedirectContext);
+  const { handleRedirect, shouldRedirect } = useContext(RedirectContext);
 
   return (
     <>

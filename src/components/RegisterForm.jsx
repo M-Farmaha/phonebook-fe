@@ -5,10 +5,10 @@ import { useCreateUserMutation } from 'redux/authApi';
 
 import { Form, Label, Input, Button } from './styled';
 import { ButtonAddLoader } from './Loaders';
-import { HandleRedirectContext } from './Layout';
+import { RedirectContext } from './Layout';
 
 export const RegisterForm = () => {
-  const handleRedirect = useContext(HandleRedirectContext);
+  const { handleRedirect, shouldRedirect } = useContext(RedirectContext);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);

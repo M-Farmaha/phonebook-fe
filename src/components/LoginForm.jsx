@@ -7,10 +7,10 @@ import { setToken } from 'redux/slice';
 
 import { ButtonAddLoader } from './Loaders';
 import { Form, Label, Input, Button } from './styled';
-import { HandleRedirectContext } from './Layout';
+import { RedirectContext } from './Layout';
 
 export const LoginForm = () => {
-  const handleRedirect = useContext(HandleRedirectContext);
+  const { handleRedirect } = useContext(RedirectContext);
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -30,7 +30,9 @@ export const LoginForm = () => {
     try {
       const response = await loginUser({ email, password }).unwrap();
       toast.success(`User "${response.user.name}", Welcome!`);
-      dispatch(setToken(response.token));
+      setTimeout(() => {
+        dispatch(setToken(response.token));
+      }, 300);
       setEmail('');
       setPassword('');
       handleRedirect('/');

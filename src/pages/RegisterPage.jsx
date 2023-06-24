@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import { LinkStyled, Section } from '../components/styled';
 import { RegisterForm } from 'components/RegisterForm';
-import { HandleRedirectContext } from 'components/Layout';
+import { RedirectContext } from 'components/Layout';
+import { PublicRoute } from 'components/PublicRoute';
 
 const RegisterPage = () => {
-  const handleRedirect = useContext(HandleRedirectContext);
+  const { handleRedirect, shouldRedirect } = useContext(RedirectContext);
+
   return (
     <>
       <Section>

@@ -8,13 +8,11 @@ import { PrivateRoute } from 'components/PrivateRoute';
 const ContactPage = () => {
   return (
     <>
-      <PrivateRoute>
-        <Section>
-          <ContactForm />
-          <Filter />
-          <ContactList />
-        </Section>
-      </PrivateRoute>
+      <Section>
+        <ContactForm />
+        <Filter />
+        <ContactList />
+      </Section>
     </>
   );
 };

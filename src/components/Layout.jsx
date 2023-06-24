@@ -5,30 +5,35 @@ import { Toaster } from 'react-hot-toast';
 import { AppBar } from './AppBar';
 import { BlurOverlayIn, BlurOverlayOut } from '../components/BlurOverlay';
 
-export const HandleRedirectContext = createContext();
+export const RedirectContext = createContext();
 
 export const Layout = () => {
   const navigate = useNavigate();
-  const [shoulRedirect, setShoulRedirect] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const handleRedirect = path => {
-    setShoulRedirect(true);
+    setShouldRedirect(true);
     setTimeout(() => {
       navigate(path);
-      setShoulRedirect(false);
+      setShouldRedirect(false);
     }, 300);
   };
 
   return (
     <>
-      <HandleRedirectContext.Provider value={handleRedirect}>
+      <RedirectContext.Provider
+        value={{
+          handleRedirect,
+          shouldRedirect,
+        }}
+      >
         <AppBar />
-        {shoulRedirect ? <BlurOverlayIn /> : <BlurOverlayOut />}
+        {shouldRedirect ? <BlurOverlayIn /> : <BlurOverlayOut />}
         <Toaster />
         <main>
           <Outlet />
         </main>
-      </HandleRedirectContext.Provider>
+      </RedirectContext.Provider>
     </>
   );
 };

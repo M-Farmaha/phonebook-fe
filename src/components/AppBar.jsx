@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { HandleRedirectContext } from './Layout';
+import { RedirectContext } from './Layout';
 import {
   NavList,
   Header,
@@ -16,7 +16,7 @@ import { setToken } from 'redux/slice';
 import { ButtonAddLoader } from './Loaders';
 
 export const AppBar = () => {
-  const handleRedirect = useContext(HandleRedirectContext);
+  const { handleRedirect } = useContext(RedirectContext);
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -43,9 +43,11 @@ export const AppBar = () => {
     setisLoading(true);
     try {
       await logoutUser(token);
-      dispatch(setToken(null));
-      toast.success(`Logged out`);
       handleRedirect('/login');
+      setTimeout(() => {
+        dispatch(setToken(null));
+      }, 300);
+      toast.success(`Logged out`);
     } catch (error) {
       toast.error(`Something went wrong. Error: ${error.status}`);
     }
