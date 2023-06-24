@@ -279,16 +279,19 @@ export const SecureButton = styled.button`
 export const DeleteIcon = styled(MdDelete)`
   width: 24px;
   height: 24px;
+  font-size: 24px;
 `;
 
 export const ShowPasswordIcon = styled(AiFillEye)`
   width: 24px;
   height: 24px;
+  font-size: 24px;
 `;
 
 export const ShowHideIcon = styled(AiFillEyeInvisible)`
   width: 24px;
   height: 24px;
+  font-size: 24px;
 `;
 
 export const ContactListWrap = styled.ul`
