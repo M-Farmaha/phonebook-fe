@@ -17,7 +17,7 @@ export const contactsApi = createApi({
       providesTags: ['Contacts'],
     }),
     deleteContact: builder.mutation({
-      query: (id, token) => ({
+      query: ({ id, token }) => ({
         url: `/contacts/${id}`,
         method: 'DELETE',
         headers: {
@@ -27,7 +27,7 @@ export const contactsApi = createApi({
       invalidatesTags: ['Contacts'],
     }),
     addContact: builder.mutation({
-      query: (body, token) => ({
+      query: ({ body, token }) => ({
         url: '/contacts',
         method: 'POST',
         headers: {

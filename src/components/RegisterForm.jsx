@@ -3,12 +3,20 @@ import { toast } from 'react-hot-toast';
 
 import { useCreateUserMutation } from 'redux/authApi';
 
-import { Form, Label, Input, Button } from './styled';
+import {
+  Form,
+  Label,
+  Input,
+  Button,
+  ShowHideIcon,
+  ShowPasswordIcon,
+  SecureButton,
+} from './styled';
 import { ButtonAddLoader } from './Loaders';
 import { RedirectContext } from './Layout';
 
 export const RegisterForm = () => {
-  const { handleRedirect, shouldRedirect } = useContext(RedirectContext);
+  const { handleRedirect } = useContext(RedirectContext);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -17,7 +25,7 @@ export const RegisterForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
   const [createNewUser] = useCreateUserMutation();
@@ -27,13 +35,13 @@ export const RegisterForm = () => {
     setisLoading(true);
     try {
       const response = await createNewUser({ name, email, password }).unwrap();
-      toast.success(`User "${response.user.name}" was registered successfully`);
+      toast.success(`"${response.user.name}" registered successfully`);
       setName('');
       setEmail('');
       setPassword('');
       handleRedirect('/login');
     } catch (error) {
-      toast.error(`Wasn't registered. Error: ${error.status}`);
+      toast.error(`Wasn't registered`);
     }
     setisLoading(false);
   };
@@ -86,19 +94,29 @@ export const RegisterForm = () => {
       >
         Password
       </Label>
-      <Input
-        style={{ marginBottom: '20px' }}
-        type="password"
-        name="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        onFocus={() => setIsPasswordFocused(true)}
-        onBlur={() => setIsPasswordFocused(false)}
-        id={'password'}
-        title="Min 7, max 20 latin letters or figures"
-        pattern="^[a-zA-Z0-9]{7,20}$"
-        required
-      />
+
+      <div style={{ position: 'relative' }}>
+        <Input
+          style={{ marginBottom: '20px', paddingRight: '50px', width: '170px' }}
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onFocus={() => setIsPasswordFocused(true)}
+          onBlur={() => setIsPasswordFocused(false)}
+          id={'password'}
+          title="Min 7, max 20 latin letters and figures"
+          pattern="^[a-zA-Z0-9]{7,20}$"
+          required
+        />
+        <SecureButton
+          type="button"
+          onClick={() => setShowPassword(prevState => !prevState)}
+        >
+          {showPassword ? <ShowHideIcon /> : <ShowPasswordIcon />}
+        </SecureButton>
+      </div>
+
       <Button
         style={{ marginBottom: '20px' }}
         type="submit"

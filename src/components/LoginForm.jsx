@@ -6,7 +6,15 @@ import { useLoginUserMutation } from 'redux/authApi';
 import { setToken } from 'redux/slice';
 
 import { ButtonAddLoader } from './Loaders';
-import { Form, Label, Input, Button } from './styled';
+import {
+  Form,
+  Label,
+  Input,
+  Button,
+  ShowPasswordIcon,
+  ShowHideIcon,
+  SecureButton,
+} from './styled';
 import { RedirectContext } from './Layout';
 
 export const LoginForm = () => {
@@ -17,7 +25,7 @@ export const LoginForm = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
   const [loginUser] = useLoginUserMutation();
@@ -29,7 +37,7 @@ export const LoginForm = () => {
     setisLoading(true);
     try {
       const response = await loginUser({ email, password }).unwrap();
-      toast.success(`User "${response.user.name}", Welcome!`);
+      toast.success(`Welcome, "${response.user.name}"!`);
       setTimeout(() => {
         dispatch(setToken(response.token));
       }, 300);
@@ -37,7 +45,7 @@ export const LoginForm = () => {
       setPassword('');
       handleRedirect('/');
     } catch (error) {
-      toast.error(`Access denied. Error: ${error.status}`);
+      toast.error(`Access denied`);
     }
     setisLoading(false);
   };
@@ -71,19 +79,29 @@ export const LoginForm = () => {
       >
         Password
       </Label>
-      <Input
-        style={{ marginBottom: '20px' }}
-        type="password"
-        name="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        onFocus={() => setIsPasswordFocused(true)}
-        onBlur={() => setIsPasswordFocused(false)}
-        id={'password'}
-        title="Min 7, max 20 latin letters and figures"
-        pattern="^[a-zA-Z0-9]{7,20}$"
-        required
-      />
+
+      <div style={{ position: 'relative' }}>
+        <Input
+          style={{ marginBottom: '20px', paddingRight: '50px', width: '170px' }}
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onFocus={() => setIsPasswordFocused(true)}
+          onBlur={() => setIsPasswordFocused(false)}
+          id={'password'}
+          title="Min 7, max 20 latin letters and figures"
+          pattern="^[a-zA-Z0-9]{7,20}$"
+          required
+        />
+        <SecureButton
+          type="button"
+          onClick={() => setShowPassword(prevState => !prevState)}
+        >
+          {showPassword ? <ShowHideIcon /> : <ShowPasswordIcon />}
+        </SecureButton>
+      </div>
+
       <Button
         style={{ marginBottom: '20px' }}
         type="submit"

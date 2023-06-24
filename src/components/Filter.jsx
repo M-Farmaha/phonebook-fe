@@ -15,7 +15,7 @@ export const Filter = () => {
   useEffect(() => {
     const debounce = setTimeout(() => {
       dispatch(setFilter(inputValue));
-    }, 500);
+    }, 300);
 
     return () => {
       clearTimeout(debounce);

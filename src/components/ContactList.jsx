@@ -5,31 +5,33 @@ import { ContactItem } from './ContactItem';
 import { ContactListWrap } from './styled';
 
 import { useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
+import { getFilter, getToken } from 'redux/selectors';
 import { useEffect } from 'react';
 import { ContactsLoader } from './Loaders';
 
 export const ContactList = () => {
-  const filter = useSelector(getFilter);
-  const { data, isLoading, error, isError } = useGetContactsQuery();
+  const token = useSelector(getToken);
 
-  // useEffect(() => {
-  //   isError && toast.error(`Wasn't loaded. Status: ${error.status}`);
-  // }, [error, isError]);
+  const filter = useSelector(getFilter);
+  const { data, isLoading, isError } = useGetContactsQuery(token);
+
+  useEffect(() => {
+    isError && toast.error(`Something went wrong`);
+  }, [isError]);
 
   const visibleContacts = data?.filter(contact =>
     contact.name.toLowerCase().includes(filter)
   );
 
-  // return isLoading ? (
-  //   <ContactsLoader />
-  // ) : (
-  //   visibleContacts.length !== 0 && (
-  //     <ContactListWrap>
-  //       {visibleContacts.map(contact => (
-  //         <ContactItem key={contact.id} contact={contact} />
-  //       ))}
-  //     </ContactListWrap>
-  //   )
-  // );
+  return isLoading ? (
+    <ContactsLoader />
+  ) : (
+    visibleContacts.length !== 0 && (
+      <ContactListWrap>
+        {visibleContacts.map(contact => (
+          <ContactItem key={contact.id} contact={contact} />
+        ))}
+      </ContactListWrap>
+    )
+  );
 };

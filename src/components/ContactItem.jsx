@@ -10,8 +10,12 @@ import { useDeleteContactMutation } from 'redux/contactsApi';
 import { ButtonDeleteLoader } from './Loaders';
 import { toast } from 'react-hot-toast';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getToken } from 'redux/selectors';
 
 export const ContactItem = ({ contact }) => {
+  const token = useSelector(getToken);
+
   const [deleteContact, { isLoading, isSuccess, isError, error }] =
     useDeleteContactMutation();
 
@@ -28,7 +32,7 @@ export const ContactItem = ({ contact }) => {
         disabled={isLoading}
         type="button"
         id={contact.id}
-        onClick={() => deleteContact(contact.id)}
+        onClick={() => deleteContact({ id: contact.id, token })}
       >
         {!isLoading ? <DeleteIcon /> : <ButtonDeleteLoader />}
       </DeleteButton>

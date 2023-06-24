@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { MdDelete } from 'react-icons/md';
+import { AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible } from 'react-icons/ai';
 import { NavLink, Link } from 'react-router-dom';
 
 export const Blur = keyframes`
@@ -36,7 +38,7 @@ export const Header = styled.header`
 
 export const NavWrap = styled.nav`
   height: 100%;
-  max-width: 480px;
+  max-width: 440px;
   padding: 0px 20px;
   margin-left: auto;
   margin-right: auto;
@@ -51,16 +53,12 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: right;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;
 
 export const NavItem = styled.li`
   height: 100%;
   min-width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
@@ -102,13 +100,40 @@ export const Section = styled.div`
   padding-bottom: 50px;
 `;
 
+export const TitleWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const PhonebookTitle = styled.h1`
-  font-size: 20px;
+  font-size: 24px;
   color: rgb(140, 141, 180);
+`;
+
+export const SubTitle = styled.p`
+  font-size: 11px;
+  font-style: inherit;
+  color: rgb(189, 190, 221);
+`;
+
+export const TitleLink = styled.a`
+  font-style: inherit;
+  color: rgb(189, 190, 221);
+
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: rgb(87, 88, 134);
+  }
 `;
 
 export const Form = styled.form`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Label = styled.label`
@@ -120,9 +145,6 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   padding: 10px 20px;
   border: none;
   outline: none;
@@ -184,6 +206,10 @@ export const DeleteButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 36px;
+  height: 36px;
+
   color: rgb(140, 141, 180);
   background-color: transparent;
   border-radius: 5px;
@@ -217,22 +243,66 @@ export const DeleteButton = styled.button`
   }
 `;
 
+export const SecureButton = styled.button`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+
+  width: 36px;
+  height: 36px;
+
+  color: rgb(140, 141, 180);
+  background-color: transparent;
+  border-radius: 5px;
+  border: 3px solid transparent;
+
+  box-shadow: rgba(255, 255, 255, 0.3) -2px 0px 6px 0px,
+    rgba(255, 255, 255, 0.5) -2px -2px 6px 0px inset,
+    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
+  transition: all 200ms linear;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: none;
+
+    color: rgb(87, 88, 134);
+    box-shadow: rgba(255, 255, 255, 0.3) -2px 0px 6px 0px,
+      rgba(255, 255, 255, 0.7) -2px -2px 6px 0px inset,
+      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px inset;
+  }
+`;
+
 export const DeleteIcon = styled(MdDelete)`
   width: 24px;
   height: 24px;
 `;
 
+export const ShowPasswordIcon = styled(AiFillEye)`
+  width: 24px;
+  height: 24px;
+`;
+
+export const ShowHideIcon = styled(AiFillEyeInvisible)`
+  width: 24px;
+  height: 24px;
+`;
+
 export const ContactListWrap = styled.ul`
+  overflow: hidden;
   backdrop-filter: blur(8px);
   border-radius: 10px;
-  min-width: 240px;
+
   width: calc(100vw - 40px);
   max-width: 440px;
   display: flex;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column-reverse;
-  overflow: hidden;
+
   border: 4px solid rgba(255, 255, 255, 0.4);
   box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
     rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
@@ -241,8 +311,10 @@ export const ContactListWrap = styled.ul`
 export const ContactItemWrap = styled.li`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  padding: 10px 10px;
+
+  padding: 5px 10px;
 
   &:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.2);
@@ -257,21 +329,26 @@ export const ContactItemWrap = styled.li`
   }
 `;
 
-export const ContactName = styled.span`
-  width: 100px;
-  display: block;
-  margin-right: auto;
+export const ContactName = styled.p`
+  width: 140px;
+  min-width: 60px;
+
+  hyphens: manual;
+  overflow-wrap: break-word;
   font-size: 14px;
   font-weight: 400;
   color: rgb(87, 88, 134);
   text-align: left;
 `;
 
-export const ContactNumber = styled.span`
-  width: 120px;
-  margin-right: auto;
+export const ContactNumber = styled.p`
+  width: 140px;
+  min-width: 60px;
+
+  hyphens: manual;
+  overflow-wrap: break-word;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   color: rgb(87, 88, 134);
   text-align: left;
 `;
@@ -289,4 +366,27 @@ export const ErrorTitle = styled.p`
   font-weight: 700;
   font-size: 50px;
   color: rgb(87, 88, 134);
+`;
+
+export const UserInfoWrap = styled.div`
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const UserInfoText = styled.p`
+  color: rgb(132, 132, 176);
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+export const UserInfoTextData = styled.span`
+  color: rgb(87, 88, 134);
+  font-size: 16px;
+  font-weight: 700;
 `;

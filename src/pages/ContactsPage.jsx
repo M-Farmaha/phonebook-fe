@@ -3,12 +3,13 @@ import { Filter } from '../components/Filter';
 import { ContactList } from '../components/ContactList';
 
 import { Section } from '../components/styled';
-import { PrivateRoute } from 'components/PrivateRoute';
+import { UserInfo } from 'components/UserInfo';
 
 const ContactPage = () => {
   return (
     <>
       <Section>
+        <UserInfo />
         <ContactForm />
         <Filter />
         <ContactList />

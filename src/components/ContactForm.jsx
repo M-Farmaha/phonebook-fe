@@ -3,8 +3,12 @@ import { Form, Label, Input, Button } from './styled';
 import { useAddContactMutation } from 'redux/contactsApi';
 import { toast } from 'react-hot-toast';
 import { ButtonAddLoader } from './Loaders';
+import { getToken } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 
 export const ContactForm = () => {
+  const token = useSelector(getToken);
+
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isNumberFocused, setIsNumberFocused] = useState(false);
 
@@ -15,7 +19,7 @@ export const ContactForm = () => {
     JSON.parse(window.localStorage.getItem('contactNumber')) ?? ''
   );
 
-  const [addContact, { isLoading, isSuccess, isError, error }] =
+  const [addContact, { isLoading, isSuccess, isError }] =
     useAddContactMutation();
 
   useEffect(() => {
@@ -27,13 +31,13 @@ export const ContactForm = () => {
   }, [number]);
 
   useEffect(() => {
-    isSuccess && toast.success('Successfully added!');
-    isError && toast.error(`Wasn't added!. Status: ${error.status}`);
-  }, [error, isError, isSuccess]);
+    isSuccess && toast.success('Contact added!');
+    isError && toast.error(`Wasn't added!`);
+  }, [isError, isSuccess]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    addContact({ name, number });
+    addContact({ body: { name, number }, token });
     setName('');
     setNumber('');
   };

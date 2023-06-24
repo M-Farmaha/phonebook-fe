@@ -7,6 +7,9 @@ import {
   PhonebookTitle,
   NavWrap,
   NavItem,
+  SubTitle,
+  TitleWrap,
+  TitleLink,
 } from '../components/styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken } from 'redux/selectors';
@@ -49,22 +52,31 @@ export const AppBar = () => {
       }, 300);
       toast.success(`Logged out`);
     } catch (error) {
-      toast.error(`Something went wrong. Error: ${error.status}`);
+      toast.error(`Something went wrong`);
     }
-    setisLoading(false);
+    setTimeout(() => {
+      setisLoading(false);
+    }, 300);
   };
 
   return (
     <Header>
       <NavWrap>
-        <PhonebookTitle>Phonebook</PhonebookTitle>
-        {token && <p>{currentUser?.data?.name}</p>}
+        <TitleWrap>
+          <PhonebookTitle>Phonebook</PhonebookTitle>
+          <SubTitle>
+            developed by{' '}
+            <TitleLink
+              href="https://github.com/M-Farmaha"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              M-Farmaha
+            </TitleLink>
+          </SubTitle>
+        </TitleWrap>
+
         <NavList>
-          <NavItem>
-            <NavLinkStyled onClick={e => handleClick(e, '/')} to="/">
-              Contacts
-            </NavLinkStyled>
-          </NavItem>
           {token ? (
             <>
               <NavItem>
