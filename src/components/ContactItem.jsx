@@ -16,13 +16,13 @@ import { getToken } from 'redux/selectors';
 export const ContactItem = ({ contact }) => {
   const token = useSelector(getToken);
 
-  const [deleteContact, { isLoading, isSuccess, isError, error }] =
+  const [deleteContact, { isLoading, isSuccess, isError }] =
     useDeleteContactMutation();
 
   useEffect(() => {
-    isSuccess && toast.success('Successfully deleted!');
-    isError && toast.error(`Wasn't deleted. Status: ${error.status}`);
-  }, [error, isError, isSuccess]);
+    isSuccess && toast.success('Contact deleted!');
+    isError && toast.error(`Wasn't deleted`);
+  }, [isError, isSuccess]);
 
   return (
     <ContactItemWrap>
