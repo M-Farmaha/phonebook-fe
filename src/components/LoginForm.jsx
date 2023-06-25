@@ -96,6 +96,7 @@ export const LoginForm = () => {
         />
         <SecureButton
           style={{ position: 'absolute', top: 0, right: 0 }}
+          disabled={isLoading}
           type="button"
           id="123"
           onClick={() => setShowPassword(prevState => !prevState)}

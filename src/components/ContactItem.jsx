@@ -4,7 +4,7 @@ import {
   ContactName,
   ContactNumber,
   DeleteButton,
-  DeleteIcon,
+  HidePasswordIcon,
 } from './styled';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 import { ButtonDeleteLoader } from './Loaders';
@@ -34,7 +34,7 @@ export const ContactItem = ({ contact }) => {
         id={contact.id}
         onClick={() => deleteContact({ id: contact.id, token })}
       >
-        {!isLoading ? <DeleteIcon /> : <ButtonDeleteLoader />}
+        {!isLoading ? <HidePasswordIcon /> : <ButtonDeleteLoader />}
       </DeleteButton>
     </ContactItemWrap>
   );
