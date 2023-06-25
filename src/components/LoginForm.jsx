@@ -72,6 +72,7 @@ export const LoginForm = () => {
         onBlur={() => setIsEmailFocused(false)}
         id={'email'}
         required
+        autoComplete="off"
       />
       <Label
         htmlFor={'password'}
@@ -97,6 +98,7 @@ export const LoginForm = () => {
           title="Min 7, max 20 latin letters and figures"
           pattern="^[a-zA-Z0-9]{7,20}$"
           required
+          autoComplete="off"
         />
         <SecureButton
           style={{ position: 'absolute', top: 0, right: 0 }}
