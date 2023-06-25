@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import {
+  ContactButton,
+  ContactInfoButton,
   ContactItemWrap,
   ContactName,
   ContactNumber,
-  DeleteButton,
   DeleteIcon,
+  EditIcon,
 } from './styled';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 import { ButtonDeleteLoader } from './Loaders';
@@ -26,16 +28,22 @@ export const ContactItem = ({ contact }) => {
 
   return (
     <ContactItemWrap>
+      <ContactInfoButton type="button">
+        {contact.name.slice(0, 1).toUpperCase()}
+      </ContactInfoButton>
       <ContactName>{contact.name}: </ContactName>
       <ContactNumber>{contact.number}</ContactNumber>
-      <DeleteButton
+      <ContactButton type="button" id={contact.id}>
+        <EditIcon />
+      </ContactButton>
+      <ContactButton
         disabled={isLoading}
         type="button"
         id={contact.id}
         onClick={() => deleteContact({ id: contact.id, token })}
       >
         {!isLoading ? <DeleteIcon /> : <ButtonDeleteLoader />}
-      </DeleteButton>
+      </ContactButton>
     </ContactItemWrap>
   );
 };

@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { MdDelete } from 'react-icons/md';
+import { MdDelete, MdEdit } from 'react-icons/md';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import { NavLink, Link } from 'react-router-dom';
@@ -206,13 +206,13 @@ export const Button = styled.button`
   }
 `;
 
-export const DeleteButton = styled.button`
+export const ContactButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
 
   color: rgb(140, 141, 180);
   background-color: transparent;
@@ -261,7 +261,7 @@ export const SecureButton = styled.button`
   background-color: transparent;
   border-radius: 5px;
   border: 3px solid transparent;
-  padding: 5px;
+  padding: 6px;
 
   box-shadow: rgba(255, 255, 255, 0.2) -5px 0px 10px -5px,
     rgba(255, 255, 255, 0.2) -2px -2px 6px 0px inset,
@@ -281,6 +281,11 @@ export const SecureButton = styled.button`
 `;
 
 export const DeleteIcon = styled(MdDelete)`
+  width: 24px;
+  height: 24px;
+`;
+
+export const EditIcon = styled(MdEdit)`
   width: 24px;
   height: 24px;
 `;
@@ -318,7 +323,7 @@ export const ContactItemWrap = styled.li`
   justify-content: space-between;
   gap: 10px;
 
-  padding: 5px 10px;
+  padding: 8px 10px;
 
   &:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.2);
@@ -387,8 +392,90 @@ export const UserInfoText = styled.p`
   font-weight: 400;
 `;
 
-export const UserInfoTextData = styled.span`
+export const UserInfoTextSpan = styled.span`
   color: rgb(87, 88, 134);
   font-size: 16px;
+  font-weight: 600;
+`;
+
+export const UserInfoProfile = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
+
+export const UserInfoButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  border: none;
+
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 900;
+  color: rgb(140, 141, 180);
+  background-color: transparent;
+
+  box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
+    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
+  transition: all 250ms linear;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: none;
+
+    color: rgb(87, 88, 134);
+    box-shadow: rgba(255, 255, 255, 0.5) -4px -2px 6px 0px,
+      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px;
+  }
+  &:disabled {
+    cursor: default;
+    color: rgb(193, 193, 208);
+    box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
+      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px;
+    transition: all 0ms linear;
+  }
+`;
+
+export const ContactInfoButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+  border: none;
+
+  font-family: inherit;
+  font-size: 18px;
   font-weight: 700;
+  color: rgb(140, 141, 180);
+  background-color: transparent;
+
+  box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
+    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
+  transition: all 250ms linear;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: none;
+
+    color: rgb(87, 88, 134);
+    box-shadow: rgba(255, 255, 255, 0.5) -4px -2px 6px 0px,
+      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px;
+  }
+  &:disabled {
+    cursor: default;
+    color: rgb(193, 193, 208);
+    box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
+      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px;
+    transition: all 0ms linear;
+  }
 `;

@@ -1,7 +1,13 @@
 import { useSelector } from 'react-redux';
 import { useGetCurrentUserQuery } from 'redux/authApi';
 import { getToken } from 'redux/selectors';
-import { UserInfoText, UserInfoTextData, UserInfoWrap } from './styled';
+import {
+  UserInfoButton,
+  UserInfoProfile,
+  UserInfoText,
+  UserInfoTextSpan,
+  UserInfoWrap,
+} from './styled';
 import { useGetContactsQuery } from 'redux/contactsApi';
 
 export const UserInfo = () => {
@@ -13,12 +19,16 @@ export const UserInfo = () => {
     token && (
       <>
         <UserInfoWrap>
-          <UserInfoText>
-            User: <UserInfoTextData>{currentUser?.data?.name}</UserInfoTextData>
-          </UserInfoText>
+          <UserInfoProfile>
+            <UserInfoButton type="button">
+              {currentUser?.data?.name.slice(0, 1).toUpperCase()}
+            </UserInfoButton>
+            <UserInfoTextSpan>{currentUser?.data?.name}</UserInfoTextSpan>
+          </UserInfoProfile>
+
           <UserInfoText>
             Contacts:{' '}
-            <UserInfoTextData>{data ? data.length : '0'}</UserInfoTextData>
+            <UserInfoTextSpan>{data ? data.length : '0'}</UserInfoTextSpan>
           </UserInfoText>
         </UserInfoWrap>
       </>
