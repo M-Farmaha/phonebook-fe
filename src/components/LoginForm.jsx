@@ -25,7 +25,7 @@ export const LoginForm = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
   const [loginUser] = useLoginUserMutation();
@@ -87,7 +87,7 @@ export const LoginForm = () => {
             paddingRight: '50px',
             width: '170px',
           }}
-          type={showPassword ? 'text' : 'password'}
+          type={true ? 'text' : 'password'}
           name="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
@@ -102,7 +102,7 @@ export const LoginForm = () => {
           style={{ position: 'absolute', top: 0, right: 0 }}
           type="button"
         >
-          {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
+          {true ? <HidePasswordIcon /> : <ShowPasswordIcon />}
         </SecureButton>
       </div>
 
