@@ -219,6 +219,7 @@ export const DeleteButton = styled.button`
   border-radius: 5px;
   border: 3px solid transparent;
   padding: 4px;
+
   box-shadow: rgba(255, 255, 255, 0.3) -2px -2px 6px 0px,
     rgba(70, 70, 70, 0.1) 4px 2px 4px 0px,
     rgba(255, 255, 255, 0.3) -2px -2px 6px 0px inset,
@@ -260,6 +261,7 @@ export const SecureButton = styled.button`
   background-color: transparent;
   border-radius: 5px;
   border: 3px solid transparent;
+  padding: 4px;
 
   box-shadow: rgba(255, 255, 255, 0.2) -5px 0px 10px -5px,
     rgba(255, 255, 255, 0.2) -2px -2px 6px 0px inset,
