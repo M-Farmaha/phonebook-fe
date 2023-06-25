@@ -67,8 +67,8 @@ export const RegisterForm = () => {
         onFocus={() => setIsNameFocused(true)}
         onBlur={() => setIsNameFocused(false)}
         id={'name'}
-        title="Min 6, max 20 latin letters"
-        pattern="^[a-zA-Z]{6,20}$"
+        title="Min 6, max 30 latin letters"
+        pattern="^[a-zA-Z\s_-']{6,30}$"
         required
       />
       <Label

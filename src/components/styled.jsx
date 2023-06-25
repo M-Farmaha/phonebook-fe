@@ -150,7 +150,9 @@ export const Input = styled.input`
   border: none;
   outline: none;
   border-radius: 5px;
+  font-weight: 400;
 
+  color: rgb(87, 88, 134);
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: rgba(255, 255, 255, 0.1) -4px -2px 6px 0px inset,
     rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
@@ -175,6 +177,7 @@ export const Button = styled.button`
 
   font-family: inherit;
   font-size: 16px;
+  font-weight: 400;
   color: rgb(140, 141, 180);
   background-color: transparent;
 
@@ -216,10 +219,10 @@ export const DeleteButton = styled.button`
   border-radius: 5px;
   border: 3px solid transparent;
   padding: 4px;
-  box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px,
-    rgba(255, 255, 255, 0.5) -4px -2px 6px 0px inset,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
+  box-shadow: rgba(255, 255, 255, 0.3) -2px -2px 6px 0px,
+    rgba(70, 70, 70, 0.1) 4px 2px 4px 0px,
+    rgba(255, 255, 255, 0.3) -2px -2px 6px 0px inset,
+    rgba(70, 70, 70, 0.1) 4px 2px 4px 0px inset;
   transition: all 200ms linear;
 
   &:hover,
@@ -228,18 +231,19 @@ export const DeleteButton = styled.button`
     outline: none;
 
     color: rgb(87, 88, 134);
-    box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px,
-      rgba(255, 255, 255, 0.7) -4px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px inset;
+    box-shadow: rgba(255, 255, 255, 0.4) -2px -2px 6px 0px,
+      rgba(70, 70, 70, 0.2) 4px 2px 4px 0px,
+      rgba(255, 255, 255, 0.4) -2px -2px 6px 0px inset,
+      rgba(70, 70, 70, 0.2) 4px 2px 4px 0px inset;
   }
 
   &:disabled {
     cursor: default;
+    color: rgb(140, 141, 180);
     box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.12) 4px 2px 4px 0px,
-      rgba(255, 255, 255, 0.5) -4px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
+      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px,
+      rgba(255, 255, 255, 0.3) -2px -2px 6px 0px inset,
+      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px inset;
     transition: all 0ms linear;
   }
 `;
@@ -304,9 +308,9 @@ export const ContactListWrap = styled.ul`
   margin-right: auto;
   flex-direction: column-reverse;
 
-  border: 4px solid rgba(255, 255, 255, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.4);
   box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
+    rgba(70, 70, 70, 0.1) 4px 2px 10px 0px;
 `;
 
 export const ContactItemWrap = styled.li`
@@ -319,14 +323,12 @@ export const ContactItemWrap = styled.li`
 
   &:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
+    box-shadow: rgba(70, 70, 70, 0.05) 0px -2px 6px 0px inset,
+      rgba(70, 70, 70, 0.05) 0px 2px 6px 0px inset;
   }
 
   &:nth-child(odd) {
     background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
   }
 `;
 

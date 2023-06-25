@@ -82,8 +82,8 @@ export const ContactForm = () => {
         onFocus={() => setIsNumberFocused(true)}
         onBlur={() => setIsNumberFocused(false)}
         id={'number'}
-        title="Only figures and spaces, min 6, max 20 symbols"
-        pattern="[0-9\s]{6,20}"
+        title="Min 6, max 30 figures, spaces, '-' and '_'"
+        pattern="^[0-9\s_\-]{6,30}$"
         required
       />
       <Button
