@@ -12,10 +12,8 @@ import {
   Input,
   Button,
   SecureButton,
-  HidePasswordIcon,
   ShowPasswordIcon,
-  ContactItemWrap,
-  ContactListWrap,
+  DeleteButton,
 } from './styled';
 import { RedirectContext } from './Layout';
 
@@ -82,38 +80,34 @@ export const LoginForm = () => {
         Password
       </Label>
 
-      <ContactListWrap>
-        <ContactItemWrap>
-          <div style={{ position: 'relative' }}>
-            <Input
-              style={{
-                marginBottom: '20px',
-                paddingRight: '50px',
-                width: '170px',
-              }}
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              onFocus={() => setIsPasswordFocused(true)}
-              onBlur={() => setIsPasswordFocused(false)}
-              id={'password'}
-              title="Min 7, max 20 latin letters and figures"
-              pattern="^[a-zA-Z0-9]{7,20}$"
-              required
-            />
-            <SecureButton
-              style={{ position: 'absolute', top: 0, right: 0 }}
-              disabled={isLoading}
-              type="button"
-              id="123"
-              onClick={() => setShowPassword(prevState => !prevState)}
-            >
-              {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
-            </SecureButton>
-          </div>
-        </ContactItemWrap>
-      </ContactListWrap>
+      <div style={{ position: 'relative' }}>
+        <Input
+          style={{
+            marginBottom: '20px',
+            paddingRight: '50px',
+            width: '170px',
+          }}
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onFocus={() => setIsPasswordFocused(true)}
+          onBlur={() => setIsPasswordFocused(false)}
+          id={'password'}
+          title="Min 7, max 20 latin letters and figures"
+          pattern="^[a-zA-Z0-9]{7,20}$"
+          required
+        />
+        <SecureButton
+          style={{ position: 'absolute', top: 0, right: 0 }}
+          disabled={isLoading}
+          type="button"
+          id="123"
+          onClick={() => setShowPassword(prevState => !prevState)}
+        >
+          {showPassword ? <DeleteButton /> : <ShowPasswordIcon />}
+        </SecureButton>
+      </div>
 
       <Button
         style={{ marginBottom: '20px' }}
