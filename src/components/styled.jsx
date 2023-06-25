@@ -145,7 +145,8 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 200px;
-  padding: 10px 20px;
+  height: 36px;
+  padding: 0px 20px;
   border: none;
   outline: none;
   border-radius: 5px;
@@ -259,7 +260,7 @@ export const SecureButton = styled.button`
   border-radius: 5px;
   border: 3px solid transparent;
 
-  box-shadow: rgba(255, 255, 255, 0.3) -2px 0px 6px 0px,
+  box-shadow: rgba(255, 255, 255, 0.3) -25px 0px 20px -5px,
     rgba(255, 255, 255, 0.5) -2px -2px 6px 0px inset,
     rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
   transition: all 200ms linear;
@@ -270,9 +271,9 @@ export const SecureButton = styled.button`
     outline: none;
 
     color: rgb(87, 88, 134);
-    box-shadow: rgba(255, 255, 255, 0.3) -2px 0px 6px 0px,
-      rgba(255, 255, 255, 0.7) -2px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px inset;
+    box-shadow: rgba(255, 255, 255, 0.4) -25px 0px 20px -5px,
+      rgba(255, 255, 255, 0.6) -2px -2px 6px 0px inset,
+      rgba(70, 70, 70, 0.2) 4px 2px 4px 0px inset;
   }
 `;
 
