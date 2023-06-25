@@ -5,8 +5,16 @@ import { useDispatch } from 'react-redux';
 import { useLoginUserMutation } from 'redux/authApi';
 import { setToken } from 'redux/slice';
 
-import { ButtonAddLoader, ButtonDeleteLoader } from './Loaders';
-import { Form, Label, Input, Button, DeleteButton, DeleteIcon } from './styled';
+import { ButtonAddLoader } from './Loaders';
+import {
+  Form,
+  Label,
+  Input,
+  Button,
+  SecureButton,
+  HidePasswordIcon,
+  ShowPasswordIcon,
+} from './styled';
 import { RedirectContext } from './Layout';
 
 export const LoginForm = () => {
@@ -86,15 +94,14 @@ export const LoginForm = () => {
           pattern="^[a-zA-Z0-9]{7,20}$"
           required
         />
-        <DeleteButton
+        <SecureButton
           style={{ position: 'absolute', top: 0, right: 0 }}
-          disabled={isLoading}
           type="button"
-          id={123}
-          onClick={() => setShowPassword(prev => !prev)}
+          id="123"
+          onClick={() => setShowPassword(prevState => !prevState)}
         >
-          {!isLoading ? <DeleteIcon /> : <ButtonDeleteLoader />}
-        </DeleteButton>
+          {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
+        </SecureButton>
       </div>
 
       <Button

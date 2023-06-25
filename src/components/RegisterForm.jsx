@@ -110,6 +110,7 @@ export const RegisterForm = () => {
           required
         />
         <SecureButton
+          style={{ position: 'absolute', top: 0, right: 0 }}
           type="button"
           onClick={() => setShowPassword(prevState => !prevState)}
         >
