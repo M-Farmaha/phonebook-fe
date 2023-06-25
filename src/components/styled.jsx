@@ -249,12 +249,12 @@ export const DeleteButton = styled.button`
 `;
 
 export const SecureButton = styled.button`
-  /* position: absolute; */
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0px;
-  right: 0px;
+  top: 110px;
+  right: 110px;
 
   width: 36px;
   height: 36px;
