@@ -5,16 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useLoginUserMutation } from 'redux/authApi';
 import { setToken } from 'redux/slice';
 
-import { ButtonAddLoader } from './Loaders';
-import {
-  Form,
-  Label,
-  Input,
-  Button,
-  SecureButton,
-  HidePasswordIcon,
-  ShowPasswordIcon,
-} from './styled';
+import { ButtonAddLoader, ButtonDeleteLoader } from './Loaders';
+import { Form, Label, Input, Button, DeleteButton, DeleteIcon } from './styled';
 import { RedirectContext } from './Layout';
 
 export const LoginForm = () => {
@@ -80,25 +72,30 @@ export const LoginForm = () => {
         Password
       </Label>
 
-      <Input
-        style={{ marginBottom: '20px', paddingRight: '50px', width: '170px' }}
-        type={showPassword ? 'text' : 'password'}
-        name="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        onFocus={() => setIsPasswordFocused(true)}
-        onBlur={() => setIsPasswordFocused(false)}
-        id={'password'}
-        title="Min 7, max 20 latin letters and figures"
-        pattern="^[a-zA-Z0-9]{7,20}$"
-        required
-      />
-      <SecureButton
-        type="button"
-        onClick={() => setShowPassword(prevState => !prevState)}
-      >
-        {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
-      </SecureButton>
+      <div style={{ position: 'relative' }}>
+        <Input
+          style={{ marginBottom: '20px', paddingRight: '50px', width: '170px' }}
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onFocus={() => setIsPasswordFocused(true)}
+          onBlur={() => setIsPasswordFocused(false)}
+          id={'password'}
+          title="Min 7, max 20 latin letters and figures"
+          pattern="^[a-zA-Z0-9]{7,20}$"
+          required
+        />
+        <DeleteButton
+          style={{ position: 'absolute', top: 0, right: 0 }}
+          disabled={isLoading}
+          type="button"
+          id={123}
+          onClick={() => setShowPassword(prev => !prev)}
+        >
+          {!isLoading ? <DeleteIcon /> : <ButtonDeleteLoader />}
+        </DeleteButton>
+      </div>
 
       <Button
         style={{ marginBottom: '20px' }}
