@@ -12,8 +12,8 @@ import {
   Input,
   Button,
   ShowPasswordIcon,
-  ShowHideIcon,
   SecureButton,
+  HidePasswordIcon,
 } from './styled';
 import { RedirectContext } from './Layout';
 
@@ -98,7 +98,7 @@ export const LoginForm = () => {
           type="button"
           onClick={() => setShowPassword(prevState => !prevState)}
         >
-          {showPassword ? <ShowHideIcon /> : <ShowPasswordIcon />}
+          {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
         </SecureButton>
       </div>
 

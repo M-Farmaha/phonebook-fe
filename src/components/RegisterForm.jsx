@@ -8,9 +8,9 @@ import {
   Label,
   Input,
   Button,
-  ShowHideIcon,
   ShowPasswordIcon,
   SecureButton,
+  HidePasswordIcon,
 } from './styled';
 import { ButtonAddLoader } from './Loaders';
 import { RedirectContext } from './Layout';
@@ -113,7 +113,7 @@ export const RegisterForm = () => {
           type="button"
           onClick={() => setShowPassword(prevState => !prevState)}
         >
-          {showPassword ? <ShowHideIcon /> : <ShowPasswordIcon />}
+          {showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />}
         </SecureButton>
       </div>
 

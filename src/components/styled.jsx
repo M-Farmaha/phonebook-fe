@@ -248,8 +248,8 @@ export const SecureButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  right: 0;
+  top: 0px;
+  right: 0px;
 
   width: 36px;
   height: 36px;
@@ -279,19 +279,16 @@ export const SecureButton = styled.button`
 export const DeleteIcon = styled(MdDelete)`
   width: 24px;
   height: 24px;
-  font-size: 24px;
 `;
 
 export const ShowPasswordIcon = styled(AiFillEye)`
   width: 24px;
   height: 24px;
-  font-size: 24px;
 `;
 
-export const ShowHideIcon = styled(AiFillEyeInvisible)`
+export const HidePasswordIcon = styled(AiFillEyeInvisible)`
   width: 24px;
   height: 24px;
-  font-size: 24px;
 `;
 
 export const ContactListWrap = styled.ul`
