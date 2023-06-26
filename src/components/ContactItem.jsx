@@ -27,9 +27,74 @@ export const ContactItem = ({ contact }) => {
     });
   };
 
+  const getRandomColor = () => {
+    const userLetter = contact.name.slice(0, 1).toLowerCase();
+    const alphabet = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z',
+    ];
+    const colors = [
+      '#ff0000',
+      '#ff4000',
+      '#ff8000',
+      '#ffcc00',
+      '#ffff00',
+      '#ccff00',
+      '#80ff00',
+      '#40ff00',
+      '#00ff00',
+      '#00ff40',
+      '#00ff80',
+      '#00ffcc',
+      '#00ffff',
+      '#00ccff',
+      '#00aaff',
+      '#0080ff',
+      '#0040ff',
+      '#0000ff',
+      '#4000ff',
+      '#8000ff',
+      '#cc00ff',
+      '#ff00ff',
+      '#ff00cc',
+      '#ff00aa',
+      '#ff0080',
+      '#ff0040',
+    ];
+    const userIndex = alphabet.findIndex(el => el === userLetter);
+
+    if (userIndex === -1) {
+      return '#808080';
+    } else return colors[userIndex];
+  };
+
   return (
     <ContactItemWrap>
-      <ContactInfoButton type="button">
+      <ContactInfoButton type="button" style={{ color: getRandomColor() }}>
         {contact.name.slice(0, 1).toUpperCase()}
       </ContactInfoButton>
       <ContactName>{contact.name}: </ContactName>

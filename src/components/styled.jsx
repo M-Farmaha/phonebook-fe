@@ -457,7 +457,6 @@ export const ContactInfoButton = styled.button`
   font-family: inherit;
   font-size: 18px;
   font-weight: 700;
-  color: rgb(140, 141, 180);
   background-color: transparent;
 
   box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
