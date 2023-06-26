@@ -17,6 +17,7 @@ import { useGetCurrentUserQuery, useLogoutUserMutation } from 'redux/authApi';
 import { toast } from 'react-hot-toast';
 import { setToken } from 'redux/slice';
 import { ButtonAddLoader } from './Loaders';
+import { useLocation } from 'react-router-dom';
 
 export const AppBar = () => {
   const { handleRedirect } = useContext(RedirectContext);
@@ -29,6 +30,7 @@ export const AppBar = () => {
   const currentUser = useGetCurrentUserQuery(token);
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     if (currentUser.status === 'rejected') {
@@ -38,7 +40,9 @@ export const AppBar = () => {
 
   const handleClick = (e, path) => {
     e.preventDefault();
-    handleRedirect(path);
+    if (location.pathname !== path) {
+      handleRedirect(path);
+    }
   };
 
   const handleLogOutClick = async e => {

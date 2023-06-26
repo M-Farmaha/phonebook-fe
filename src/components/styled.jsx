@@ -125,7 +125,7 @@ export const TitleLink = styled.a`
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: rgb(87, 88, 134);
+    color: rgb(255, 129, 192);
   }
 `;
 
@@ -417,7 +417,7 @@ export const UserInfoButton = styled.button`
   font-family: inherit;
   font-size: 20px;
   font-weight: 900;
-  color: rgb(140, 141, 180);
+  color: rgb(255, 129, 192);
   background-color: transparent;
 
   box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
@@ -429,7 +429,7 @@ export const UserInfoButton = styled.button`
     cursor: pointer;
     outline: none;
 
-    color: rgb(87, 88, 134);
+    color: rgb(255, 0, 128);
     box-shadow: rgba(255, 255, 255, 0.5) -4px -2px 6px 0px,
       rgba(70, 70, 70, 0.3) 4px 2px 4px 0px;
   }

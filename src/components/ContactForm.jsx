@@ -19,8 +19,7 @@ export const ContactForm = () => {
     JSON.parse(window.localStorage.getItem('contactNumber')) ?? ''
   );
 
-  const [addContact, { isLoading, isSuccess, isError }] =
-    useAddContactMutation();
+  const [addContact, { isLoading }] = useAddContactMutation();
 
   useEffect(() => {
     window.localStorage.setItem('contactName', JSON.stringify(name));
@@ -30,14 +29,13 @@ export const ContactForm = () => {
     window.localStorage.setItem('contactNumber', JSON.stringify(number));
   }, [number]);
 
-  useEffect(() => {
-    isSuccess && toast.success('Contact added!');
-    isError && toast.error(`Wasn't added!`);
-  }, [isError, isSuccess]);
-
   const handleSubmit = e => {
     e.preventDefault();
-    addContact({ body: { name, number }, token });
+    toast.promise(addContact({ body: { name, number }, token }), {
+      loading: `Adding...`,
+      success: `Contact added!`,
+      error: `Wasn't added`,
+    });
     setName('');
     setNumber('');
   };

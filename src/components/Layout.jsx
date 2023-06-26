@@ -29,7 +29,19 @@ export const Layout = () => {
       >
         <AppBar />
         {shouldRedirect ? <BlurOverlayIn /> : <BlurOverlayOut />}
-        <Toaster />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              padding: '8px',
+              color: 'rgb(87, 88, 134)',
+            },
+            iconTheme: {
+              primary: 'rgb(255, 0, 128)',
+              secondary: '#ffffff',
+            },
+          }}
+        />
         <main>
           <Outlet />
         </main>
