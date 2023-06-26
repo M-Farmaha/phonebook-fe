@@ -447,6 +447,8 @@ export const ContactInfoButton = styled.button`
   justify-content: center;
   align-items: center;
   min-width: 34px;
+  max-width: 34px;
+  width: 34px;
   height: 34px;
 
   border-radius: 50%;
