@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { RedirectContext } from './Layout';
+import { Context } from './Layout';
 import {
   NavList,
   Header,
@@ -20,7 +20,7 @@ import { ButtonAddLoader } from './Loaders';
 import { useLocation } from 'react-router-dom';
 
 export const AppBar = () => {
-  const { handleRedirect } = useContext(RedirectContext);
+  const { handleRedirect, isModalOpen, toggleModal } = useContext(Context);
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -47,6 +47,7 @@ export const AppBar = () => {
 
   const handleLogOutClick = async e => {
     e.preventDefault();
+    if (isModalOpen) toggleModal();
     setisLoading(true);
     try {
       await logoutUser(token);

@@ -13,10 +13,10 @@ import {
   HidePasswordIcon,
 } from './styled';
 import { ButtonAddLoader } from './Loaders';
-import { RedirectContext } from './Layout';
+import { Context } from './Layout';
 
 export const RegisterForm = () => {
-  const { handleRedirect } = useContext(RedirectContext);
+  const { handleRedirect } = useContext(Context);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);

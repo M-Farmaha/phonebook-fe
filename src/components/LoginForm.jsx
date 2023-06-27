@@ -15,10 +15,10 @@ import {
   HidePasswordIcon,
   ShowPasswordIcon,
 } from './styled';
-import { RedirectContext } from './Layout';
+import { Context } from './Layout';
 
 export const LoginForm = () => {
-  const { handleRedirect } = useContext(RedirectContext);
+  const { handleRedirect } = useContext(Context);
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);

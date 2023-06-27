@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { LinkStyled, Section } from '../components/styled';
 import { LoginForm } from 'components/LoginForm';
-import { RedirectContext } from 'components/Layout';
+import { Context } from 'components/Layout';
 
 const LoginPage = () => {
-  const { handleRedirect } = useContext(RedirectContext);
+  const { handleRedirect } = useContext(Context);
 
   return (
     <>

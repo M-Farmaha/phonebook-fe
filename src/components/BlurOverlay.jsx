@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BlurDiv } from './styled';
+import { BlurDiv, ModalBlurDiv } from './styled';
 
 export const BlurOverlayOut = () => {
   const [isLoaded, setisLoaded] = useState(false);
@@ -13,4 +13,22 @@ export const BlurOverlayOut = () => {
 
 export const BlurOverlayIn = () => {
   return <BlurDiv style={{ animationDirection: 'reverse' }} />;
+};
+
+export const ModalBlurOverlayOut = () => {
+  const [isLoaded, setisLoaded] = useState(false);
+
+  setTimeout(() => {
+    setisLoaded(true);
+  }, 350);
+
+  return !isLoaded && <ModalBlurDiv />;
+};
+
+export const ModalBlurOverlayIn = () => {
+  return (
+    <ModalBlurDiv
+      style={{ animationFillMode: 'forwards', animationDirection: 'reverse' }}
+    />
+  );
 };

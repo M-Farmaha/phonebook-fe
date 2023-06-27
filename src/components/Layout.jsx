@@ -3,13 +3,21 @@ import { useNavigate, Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 import { AppBar } from './AppBar';
-import { BlurOverlayIn, BlurOverlayOut } from '../components/BlurOverlay';
+import {
+  BlurOverlayIn,
+  BlurOverlayOut,
+  ModalBlurOverlayIn,
+  ModalBlurOverlayOut,
+} from '../components/BlurOverlay';
+import { ContactModal } from './ContactModal';
 
-export const RedirectContext = createContext();
+export const Context = createContext();
 
 export const Layout = () => {
   const navigate = useNavigate();
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userInModal, setUserInModal] = useState(null);
 
   const handleRedirect = path => {
     setShouldRedirect(true);
@@ -19,12 +27,19 @@ export const Layout = () => {
     }, 300);
   };
 
+  const toggleModal = user => {
+    setUserInModal(user);
+    setIsModalOpen(prev => !prev);
+  };
+
   return (
     <>
-      <RedirectContext.Provider
+      <Context.Provider
         value={{
           handleRedirect,
           shouldRedirect,
+          isModalOpen,
+          toggleModal,
         }}
       >
         <AppBar />
@@ -44,8 +59,12 @@ export const Layout = () => {
         />
         <main>
           <Outlet />
+          {isModalOpen && (
+            <ContactModal toggleModal={toggleModal} userInModal={userInModal} />
+          )}
+          {isModalOpen ? <ModalBlurOverlayIn /> : <ModalBlurOverlayOut />}
         </main>
-      </RedirectContext.Provider>
+      </Context.Provider>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { MdDelete, MdEdit } from 'react-icons/md';
+import { MdDelete, MdEdit, MdClose } from 'react-icons/md';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import { NavLink, Link } from 'react-router-dom';
@@ -20,9 +20,40 @@ export const BlurDiv = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-index: 99;
   animation-name: ${Blur};
   animation-duration: 350ms;
+`;
+
+export const ModalBlur = keyframes`
+  0% {
+    backdrop-filter: blur(10px);
+  }
+
+  100% {
+    backdrop-filter: blur(0px);
+  }
+`;
+
+export const ModalBlurDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  animation-name: ${ModalBlur};
+  animation-duration: 350ms;
+`;
+
+export const ModalBobyBlur = keyframes`
+  0% {
+    filter: blur(40px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
 `;
 
 export const Header = styled.header`
@@ -125,7 +156,7 @@ export const TitleLink = styled.a`
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: rgb(255, 129, 192);
+    color: rgb(87, 88, 134);
   }
 `;
 
@@ -290,6 +321,11 @@ export const EditIcon = styled(MdEdit)`
   height: 24px;
 `;
 
+export const CloseIcon = styled(MdClose)`
+  width: 24px;
+  height: 24px;
+`;
+
 export const ShowPasswordIcon = styled(AiFillEye)`
   width: 24px;
   height: 24px;
@@ -404,45 +440,9 @@ export const UserInfoProfile = styled.div`
   align-items: center;
 `;
 
-export const UserInfoButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-  border: none;
-
-  font-family: inherit;
-  font-size: 20px;
-  font-weight: 900;
-  color: rgb(255, 129, 192);
-  background-color: transparent;
-
-  box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
-  transition: all 250ms linear;
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    outline: none;
-
-    color: rgb(255, 0, 128);
-    box-shadow: rgba(255, 255, 255, 0.5) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px;
-  }
-  &:disabled {
-    cursor: default;
-    color: rgb(193, 193, 208);
-    box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px;
-    transition: all 0ms linear;
-  }
-`;
-
 export const ContactInfoButton = styled.button`
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -451,16 +451,17 @@ export const ContactInfoButton = styled.button`
   width: 34px;
   height: 34px;
 
+  margin-right: 5px;
+
   border-radius: 50%;
   border: none;
 
   font-family: inherit;
   font-size: 18px;
   font-weight: 700;
-  background-color: transparent;
 
-  box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
+  color: #ffffff;
+
   transition: all 250ms linear;
 
   &:hover,
@@ -468,15 +469,81 @@ export const ContactInfoButton = styled.button`
     cursor: pointer;
     outline: none;
 
-    color: rgb(87, 88, 134);
-    box-shadow: rgba(255, 255, 255, 0.5) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px;
+    filter: contrast(1.3);
   }
-  &:disabled {
-    cursor: default;
-    color: rgb(193, 193, 208);
-    box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px;
-    transition: all 0ms linear;
+`;
+
+export const ContactInfoButtonFilter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 60px;
+  min-height: 60px;
+
+  background: linear-gradient(120deg, #f4f9ffaa, #9598caaa);
+`;
+
+export const ContactInfoButtonInModal = styled.button`
+  overflow: hidden;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  max-width: 60px;
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: none;
+
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #ffffff;
+
+  transition: all 250ms linear;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: none;
+
+    filter: contrast(1.1);
   }
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  animation-name: ${ModalBobyBlur};
+  animation-duration: 350ms;
+`;
+
+export const ModalWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  border-radius: 10px;
+  border-style: outset;
+  border-width: 1px;
+  border-color: #ddf2ffde;
+  background: linear-gradient(to right, #eff0f5, #b8c3d0);
+
+  box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
+    rgba(70, 70, 70, 0.1) 4px 2px 10px 0px;
 `;
