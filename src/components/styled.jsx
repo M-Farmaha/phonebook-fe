@@ -181,7 +181,9 @@ export const Input = styled.input`
   border: none;
   outline: none;
   border-radius: 5px;
+  font-family: inherit;
   font-weight: 400;
+  font-size: 16px;
 
   color: rgb(87, 88, 134);
   background-color: rgba(255, 255, 255, 0.1);
