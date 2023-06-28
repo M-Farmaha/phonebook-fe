@@ -25,9 +25,9 @@ const reducer = combineReducers({
 });
 
 const persistConfig = {
-  key: 'token',
+  key: 'root',
   storage,
-  whitelist: 'token',
+  whitelist: ['token', 'theme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

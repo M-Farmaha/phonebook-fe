@@ -44,7 +44,7 @@ export const darkTheme = {
   ...lightTheme,
 
   primaryTextColor: 'rgb(177, 193, 226)',
-  disabledTextColor: 'rgb(69, 72, 96)',
+  disabledTextColor: 'rgb(75, 83, 95)',
   hoverTextColor: 'rgb(255, 255, 255)',
   alternativeTextColor: 'rgb(49, 49, 98)',
 

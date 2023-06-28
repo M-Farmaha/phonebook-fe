@@ -18,7 +18,7 @@ import { toast } from 'react-hot-toast';
 import { setToken } from 'redux/slice';
 import { ButtonAddLoader } from './Loaders';
 import { useLocation } from 'react-router-dom';
-import { ThemeSwitcher } from './ThemeSwitcher';
+import { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
 
 export const AppBar = () => {
   const { handleRedirect, isModalOpen, toggleModal } = useContext(Context);

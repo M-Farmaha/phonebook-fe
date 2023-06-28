@@ -10,54 +10,5 @@ body {
   background: ${props => props.theme.mainBGGradient};
 
   transition: ${props => props.theme.transition};
-
-  padding: 0;
-  margin: 0;
-
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  &.modal-open {
-    overflow: hidden;
-  }
-
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-input {
-  -webkit-appearance: none;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
 }
 `;

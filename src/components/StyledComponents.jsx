@@ -78,30 +78,31 @@ export const NavWrap = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;
 
 export const NavList = styled.ul`
-  height: 100%;
+  height: 80%;
+
   display: flex;
-  justify-content: right;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
 `;
 
 export const NavItem = styled.li`
   height: 100%;
-  min-width: 60px;
+  min-width: 65px;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
-  padding: auto 0px;
+
   color: ${props => props.theme.primaryTextColor};
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
 

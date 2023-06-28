@@ -58,11 +58,15 @@ export const Layout = () => {
             toastOptions={{
               style: {
                 padding: '8px',
-                color: 'rgb(87, 88, 134)',
+                color:
+                  theme === 'light' ? 'rgb(37, 67, 89)' : 'rgb(255, 255, 255)',
+                background:
+                  theme === 'light' ? 'rgb(255, 255, 255)' : 'rgb(37, 67, 89)',
               },
               iconTheme: {
-                primary: 'rgb(59, 59, 119)',
-                secondary: '#ffffff',
+                primary: theme === 'light' ? 'rgb(37, 67, 89)' : '#ffffff',
+                secondary:
+                  theme === 'light' ? 'rgb(255, 255, 255)' : 'rgb(37, 67, 89)',
               },
             }}
           />
