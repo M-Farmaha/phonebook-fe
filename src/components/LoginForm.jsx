@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLoginUserMutation } from 'redux/authApi';
 import { setToken } from 'redux/slice';
 
@@ -14,11 +14,14 @@ import {
   SecureButton,
   HidePasswordIcon,
   ShowPasswordIcon,
-} from './styled';
+} from './StyledComponents';
 import { Context } from './Layout';
+import { getTheme } from 'redux/selectors';
+import { darkTheme, lightTheme } from 'themes';
 
 export const LoginForm = () => {
   const { handleRedirect } = useContext(Context);
+  const theme = useSelector(getTheme);
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -58,7 +61,15 @@ export const LoginForm = () => {
     >
       <Label
         htmlFor={'email'}
-        style={{ color: isEmailFocused && 'rgb(87, 88, 134)' }}
+        style={{
+          color: isEmailFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         E-mail Address
       </Label>
@@ -76,7 +87,15 @@ export const LoginForm = () => {
       />
       <Label
         htmlFor={'password'}
-        style={{ color: isPasswordFocused && 'rgb(87, 88, 134)' }}
+        style={{
+          color: isPasswordFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         Password
       </Label>

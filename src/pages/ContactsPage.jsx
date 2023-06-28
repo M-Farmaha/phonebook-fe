@@ -2,7 +2,7 @@ import { ContactForm } from '../components/ContactForm';
 import { Filter } from '../components/Filter';
 import { ContactList } from '../components/ContactList';
 
-import { Section } from '../components/styled';
+import { Section } from '../components/StyledComponents';
 import { UserInfo } from 'components/UserInfo';
 
 const ContactPage = () => {

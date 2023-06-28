@@ -7,7 +7,7 @@ import {
   ContactName,
   ContactNumber,
   DeleteIcon,
-} from './styled';
+} from './StyledComponents';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 import { ButtonDeleteLoader } from './Loaders';
 import { toast } from 'react-hot-toast';

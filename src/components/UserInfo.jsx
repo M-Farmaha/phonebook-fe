@@ -8,7 +8,7 @@ import {
   UserInfoText,
   UserInfoTextSpan,
   UserInfoWrap,
-} from './styled';
+} from './StyledComponents';
 import { useGetContactsQuery } from 'redux/contactsApi';
 import { getRandomColor } from 'getRandomColor';
 

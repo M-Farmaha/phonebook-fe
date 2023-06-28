@@ -6,7 +6,7 @@ import {
   ContactInfoButtonInModal,
   ModalOverlay,
   ModalWrap,
-} from './styled';
+} from './StyledComponents';
 import { ContactEditForm } from './ContactEditForm';
 import { getRandomColor } from 'getRandomColor';
 

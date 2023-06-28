@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BlurDiv, ModalBlurDiv } from './styled';
+import { BlurDiv, ModalBlurDiv } from './StyledComponents';
 
 export const BlurOverlayOut = () => {
   const [isLoaded, setisLoaded] = useState(false);
@@ -20,7 +20,7 @@ export const ModalBlurOverlayOut = () => {
 
   setTimeout(() => {
     setisLoaded(true);
-  }, 350);
+  }, 250);
 
   return !isLoaded && <ModalBlurDiv />;
 };

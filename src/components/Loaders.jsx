@@ -1,9 +1,17 @@
 import { RotatingLines } from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
+import { getTheme } from 'redux/selectors';
+import { darkTheme, lightTheme } from 'themes';
 
 export const ButtonDeleteLoader = () => {
+  const theme = useSelector(getTheme);
   return (
     <RotatingLines
-      strokeColor="rgb(87, 88, 134)"
+      strokeColor={
+        theme === 'light'
+          ? lightTheme.primaryTextColor
+          : darkTheme.primaryTextColor
+      }
       strokeWidth="5"
       animationDuration="0.75"
       width="24"
@@ -13,9 +21,14 @@ export const ButtonDeleteLoader = () => {
 };
 
 export const ButtonAddLoader = () => {
+  const theme = useSelector(getTheme);
   return (
     <RotatingLines
-      strokeColor="rgb(87, 88, 134)"
+      strokeColor={
+        theme === 'light'
+          ? lightTheme.primaryTextColor
+          : darkTheme.primaryTextColor
+      }
       strokeWidth="5"
       animationDuration="0.75"
       width="24"
@@ -25,9 +38,14 @@ export const ButtonAddLoader = () => {
 };
 
 export const ContactsLoader = () => {
+  const theme = useSelector(getTheme);
   return (
     <RotatingLines
-      strokeColor="rgb(87, 88, 134)"
+      strokeColor={
+        theme === 'light'
+          ? lightTheme.primaryTextColor
+          : darkTheme.primaryTextColor
+      }
       strokeWidth="5"
       animationDuration="0.75"
       width="66"

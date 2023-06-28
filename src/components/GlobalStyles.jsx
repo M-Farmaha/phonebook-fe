@@ -1,13 +1,18 @@
-@import-normalize;
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyles = createGlobalStyle`
 
 body {
   font-family: "Montserrat", sans-serif;
   line-height: 1.1;
-  color: rgb(132, 132, 176);
-  background: linear-gradient(to right, #eff0f5, #b8c3d0);
+
+  color: ${props => props.theme.primaryTextColor};
+  background: ${props => props.theme.mainBGGradient};
+
+  transition: ${props => props.theme.transition};
+
   padding: 0;
   margin: 0;
-
 
   overflow: auto;
   -ms-overflow-style: none;
@@ -55,3 +60,4 @@ input {
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+`;

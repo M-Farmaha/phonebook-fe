@@ -10,7 +10,7 @@ import {
   SubTitle,
   TitleWrap,
   TitleLink,
-} from '../components/styled';
+} from './StyledComponents';
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken } from 'redux/selectors';
 import { useGetCurrentUserQuery, useLogoutUserMutation } from 'redux/authApi';
@@ -18,6 +18,7 @@ import { toast } from 'react-hot-toast';
 import { setToken } from 'redux/slice';
 import { ButtonAddLoader } from './Loaders';
 import { useLocation } from 'react-router-dom';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 export const AppBar = () => {
   const { handleRedirect, isModalOpen, toggleModal } = useContext(Context);
@@ -80,7 +81,7 @@ export const AppBar = () => {
             </TitleLink>
           </SubTitle>
         </TitleWrap>
-
+        <ThemeSwitcher />
         <NavList>
           {token ? (
             <>

@@ -1,4 +1,4 @@
-import { ErrorTitle, ErrorWrap } from 'components/styled';
+import { ErrorTitle, ErrorWrap } from 'components/StyledComponents';
 
 export const ErrorPage = () => {
   return (

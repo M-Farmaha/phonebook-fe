@@ -1,13 +1,14 @@
-import { Form, Input, Label } from './styled';
+import { Form, Input, Label } from './StyledComponents';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/slice';
-import { getFilter } from 'redux/selectors';
+import { getFilter, getTheme } from 'redux/selectors';
 import { useEffect, useState } from 'react';
+import { darkTheme, lightTheme } from 'themes';
 
 export const Filter = () => {
   const [isFilterFocused, setIsFilterFocused] = useState(false);
-
+  const theme = useSelector(getTheme);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState(filter);
@@ -29,7 +30,13 @@ export const Filter = () => {
         style={{
           fontSize: 16,
           fontWeight: 400,
-          color: isFilterFocused && 'rgb(87, 88, 134)',
+          color: isFilterFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
         }}
       >
         Find contacts by name

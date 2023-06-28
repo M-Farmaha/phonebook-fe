@@ -43,7 +43,7 @@ export const ModalBlurDiv = styled.div`
   height: 100%;
   z-index: 99;
   animation-name: ${ModalBlur};
-  animation-duration: 350ms;
+  animation-duration: 250ms;
 `;
 
 export const ModalBobyBlur = keyframes`
@@ -62,9 +62,11 @@ export const Header = styled.header`
   left: 0;
   position: sticky;
   z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${props => props.theme.headerBG};
   backdrop-filter: blur(10px);
-  box-shadow: rgba(251, 252, 255, 0.2) 0px 12px 15px 0px;
+  box-shadow: ${props => props.theme.headerShadow};
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const NavWrap = styled.nav`
@@ -98,37 +100,39 @@ export const NavLinkStyled = styled(NavLink)`
   justify-content: center;
   align-items: center;
   padding: auto 0px;
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
 
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${props => props.theme.transition};
 
   &:hover {
-    color: rgb(87, 88, 134);
+    color: ${props => props.theme.hoverTextColor};
   }
   &.active {
-    color: rgb(191, 191, 220);
+    color: ${props => props.theme.disabledTextColor};
     cursor: default;
   }
 `;
 
 export const LinkStyled = styled(Link)`
   font-size: 16px;
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
 
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${props => props.theme.transition};
 
   &:hover {
-    color: rgb(87, 88, 134);
+    color: ${props => props.theme.hoverTextColor};
   }
 `;
 
 export const Section = styled.div`
   text-align: center;
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
   padding-bottom: 50px;
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const TitleWrap = styled.div`
@@ -140,23 +144,27 @@ export const TitleWrap = styled.div`
 
 export const PhonebookTitle = styled.h1`
   font-size: 24px;
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const SubTitle = styled.p`
   font-size: 11px;
   font-style: inherit;
-  color: rgb(189, 190, 221);
+  color: ${props => props.theme.disabledTextColor};
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const TitleLink = styled.a`
   font-style: inherit;
-  color: rgb(189, 190, 221);
+  color: ${props => props.theme.disabledTextColor};
 
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${props => props.theme.transition};
 
   &:hover {
-    color: rgb(87, 88, 134);
+    color: ${props => props.theme.hoverTextColor};
   }
 `;
 
@@ -185,16 +193,15 @@ export const Input = styled.input`
   font-weight: 400;
   font-size: 16px;
 
-  color: rgb(87, 88, 134);
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: rgba(255, 255, 255, 0.1) -4px -2px 6px 0px inset,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px inset;
-  transition: all 250ms linear;
+  color: ${props => props.theme.primaryTextColor};
+  background-color: ${props => props.theme.inputBG};
+  box-shadow: ${props => props.theme.inputShadow};
+
+  transition: ${props => props.theme.transition};
 
   &:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px inset;
+    background-color: ${props => props.theme.inputBGFocus};
+    box-shadow: ${props => props.theme.inputShadowFocus};
   }
 `;
 
@@ -211,31 +218,30 @@ export const Button = styled.button`
   font-family: inherit;
   font-size: 16px;
   font-weight: 400;
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
   background-color: transparent;
 
   border-radius: 5px;
   border: none;
   padding: 8px 20px;
-  box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.12) 4px 2px 4px 0px;
-  transition: all 250ms linear;
+  box-shadow: ${props => props.theme.buttonShadow};
+
+  transition: ${props => props.theme.transition};
 
   &:hover,
   &:focus {
     cursor: pointer;
     outline: none;
 
-    color: rgb(87, 88, 134);
-    box-shadow: rgba(255, 255, 255, 0.5) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.3) 4px 2px 4px 0px;
+    color: ${props => props.theme.hoverTextColor};
+    box-shadow: ${props => props.theme.buttonShadowFocus};
   }
   &:disabled {
     cursor: default;
-    color: rgb(193, 193, 208);
-    box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px;
-    transition: all 0ms linear;
+    color: ${props => props.theme.disabledTextColor};
+    box-shadow: ${props => props.theme.buttonShadow};
+
+    transition: ${props => props.theme.transitionDisabled};
   }
 `;
 
@@ -247,38 +253,31 @@ export const ContactButton = styled.button`
   width: 34px;
   height: 34px;
 
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
   background-color: transparent;
   border-radius: 5px;
-  border: 3px solid transparent;
+  border: 3px solid rgba(255, 255, 255, 0.05);
   padding: 4px;
+  box-shadow: ${props => props.theme.contactButtonShadow};
 
-  box-shadow: rgba(255, 255, 255, 0.3) -2px -2px 6px 0px,
-    rgba(70, 70, 70, 0.1) 4px 2px 4px 0px,
-    rgba(255, 255, 255, 0.3) -2px -2px 6px 0px inset,
-    rgba(70, 70, 70, 0.1) 4px 2px 4px 0px inset;
-  transition: all 200ms linear;
+  transition: ${props => props.theme.transition};
 
   &:hover,
   &:focus {
     cursor: pointer;
     outline: none;
-
-    color: rgb(87, 88, 134);
-    box-shadow: rgba(255, 255, 255, 0.4) -2px -2px 6px 0px,
-      rgba(70, 70, 70, 0.2) 4px 2px 4px 0px,
-      rgba(255, 255, 255, 0.4) -2px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.2) 4px 2px 4px 0px inset;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    color: ${props => props.theme.hoverTextColor};
+    box-shadow: ${props => props.theme.contactButtonShadowFocus};
   }
 
   &:disabled {
     cursor: default;
-    color: rgb(140, 141, 180);
-    box-shadow: rgba(255, 255, 255, 0.3) -4px -2px 6px 0px,
-      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px,
-      rgba(255, 255, 255, 0.3) -2px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.1) 4px 2px 4px 0px inset;
-    transition: all 0ms linear;
+    border: 3px solid transparent;
+    color: ${props => props.theme.disabledTextColor};
+    box-shadow: ${props => props.theme.contactButtonShadow};
+
+    transition: ${props => props.theme.transitionDisabled};
   }
 `;
 
@@ -290,26 +289,23 @@ export const SecureButton = styled.button`
   width: 36px;
   height: 36px;
 
-  color: rgb(140, 141, 180);
+  color: ${props => props.theme.primaryTextColor};
   background-color: transparent;
   border-radius: 5px;
   border: 3px solid transparent;
   padding: 6px;
 
-  box-shadow: rgba(255, 255, 255, 0.2) -5px 0px 10px -5px,
-    rgba(255, 255, 255, 0.2) -2px -2px 6px 0px inset,
-    rgba(70, 70, 70, 0.1) 4px 2px 4px 0px inset;
-  transition: all 200ms linear;
+  box-shadow: ${props => props.theme.secureButtonShadow};
+
+  transition: ${props => props.theme.transition};
 
   &:hover,
   &:focus {
     cursor: pointer;
     outline: none;
 
-    color: rgb(87, 88, 134);
-    box-shadow: rgba(255, 255, 255, 0.3) -5px 0px 10px -5px,
-      rgba(255, 255, 255, 0.3) -2px -2px 6px 0px inset,
-      rgba(70, 70, 70, 0.2) 4px 2px 4px 0px inset;
+    color: ${props => props.theme.hoverTextColor};
+    box-shadow: ${props => props.theme.secureButtonShadowFocus};
   }
 `;
 
@@ -350,9 +346,10 @@ export const ContactListWrap = styled.ul`
   margin-right: auto;
   flex-direction: column-reverse;
 
-  border: 3px solid rgba(255, 255, 255, 0.4);
-  box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.1) 4px 2px 10px 0px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: ${props => props.theme.contactsShadow};
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const ContactItemWrap = styled.li`
@@ -364,13 +361,13 @@ export const ContactItemWrap = styled.li`
   padding: 8px 10px;
 
   &:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: transparent;
     box-shadow: rgba(70, 70, 70, 0.05) 0px -2px 6px 0px inset,
       rgba(70, 70, 70, 0.05) 0px 2px 6px 0px inset;
   }
 
   &:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 `;
 
@@ -382,8 +379,10 @@ export const ContactName = styled.p`
   overflow-wrap: break-word;
   font-size: 14px;
   font-weight: 400;
-  color: rgb(87, 88, 134);
+  color: ${props => props.theme.primaryTextColor};
   text-align: left;
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const ContactNumber = styled.p`
@@ -394,8 +393,10 @@ export const ContactNumber = styled.p`
   overflow-wrap: break-word;
   font-size: 14px;
   font-weight: 500;
-  color: rgb(87, 88, 134);
+  color: ${props => props.theme.primaryTextColor};
   text-align: left;
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const ErrorWrap = styled.div`
@@ -410,7 +411,9 @@ export const ErrorWrap = styled.div`
 export const ErrorTitle = styled.p`
   font-weight: 700;
   font-size: 50px;
-  color: rgb(87, 88, 134);
+  color: ${props => props.theme.primaryTextColor};
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const UserInfoWrap = styled.div`
@@ -425,15 +428,19 @@ export const UserInfoWrap = styled.div`
 `;
 
 export const UserInfoText = styled.p`
-  color: rgb(132, 132, 176);
+  color: ${props => props.theme.primaryTextColor};
   font-size: 16px;
   font-weight: 400;
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const UserInfoTextSpan = styled.span`
-  color: rgb(87, 88, 134);
+  color: ${props => props.theme.primaryTextColor};
   font-size: 16px;
   font-weight: 600;
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const UserInfoProfile = styled.div`
@@ -462,9 +469,9 @@ export const ContactInfoButton = styled.button`
   font-size: 18px;
   font-weight: 700;
 
-  color: #ffffff;
+  color: ${props => props.theme.alternativeTextColor};
 
-  transition: all 250ms linear;
+  transition: ${props => props.theme.transition};
 
   &:hover,
   &:focus {
@@ -505,9 +512,9 @@ export const ContactInfoButtonInModal = styled.button`
   font-size: 30px;
   font-weight: 700;
 
-  color: #ffffff;
+  color: ${props => props.theme.alternativeTextColor};
 
-  transition: all 250ms linear;
+  transition: ${props => props.theme.transition};
 
   &:hover,
   &:focus {
@@ -531,7 +538,9 @@ export const ModalOverlay = styled.div`
   z-index: 999;
 
   animation-name: ${ModalBobyBlur};
-  animation-duration: 350ms;
+  animation-duration: 250ms;
+
+  transition: ${props => props.theme.transition};
 `;
 
 export const ModalWrap = styled.div`
@@ -543,9 +552,10 @@ export const ModalWrap = styled.div`
   border-radius: 10px;
   border-style: outset;
   border-width: 1px;
-  border-color: #ddf2ffde;
-  background: linear-gradient(to right, #eff0f5, #b8c3d0);
+  border-color: ${props => props.theme.modalBorderColor};
+  background: ${props => props.theme.mainBGGradient};
 
-  box-shadow: rgba(255, 255, 255, 0.2) -4px -2px 6px 0px,
-    rgba(70, 70, 70, 0.1) 4px 2px 10px 0px;
+  box-shadow: rgba(31, 39, 64, 0.1) 4px 2px 20px 0px;
+
+  transition: ${props => props.theme.transition};
 `;

@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
-import { Form, Label, Input, Button } from './styled';
+import { Form, Label, Input, Button } from './StyledComponents';
 import { useEditContactMutation } from 'redux/contactsApi';
 import { toast } from 'react-hot-toast';
 import { ButtonAddLoader } from './Loaders';
-import { getToken } from 'redux/selectors';
+import { getTheme, getToken } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import { Context } from './Layout';
+import { darkTheme, lightTheme } from 'themes';
 
 export const ContactEditForm = ({ userInModal }) => {
   const token = useSelector(getToken);
+  const theme = useSelector(getTheme);
   const { toggleModal } = useContext(Context);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
@@ -50,7 +52,15 @@ export const ContactEditForm = ({ userInModal }) => {
       >
         <Label
           htmlFor={'editname'}
-          style={{ color: isNameFocused && 'rgb(87, 88, 134)' }}
+          style={{
+            color: isNameFocused
+              ? theme === 'light'
+                ? lightTheme.hoverTextColor
+                : darkTheme.hoverTextColor
+              : theme === 'dark'
+              ? darkTheme.primaryTextColor
+              : lightTheme.primaryTextColor,
+          }}
         >
           Name
         </Label>
@@ -69,7 +79,15 @@ export const ContactEditForm = ({ userInModal }) => {
         />
         <Label
           htmlFor={'editnumber'}
-          style={{ color: isNumberFocused && 'rgb(87, 88, 134)' }}
+          style={{
+            color: isNumberFocused
+              ? theme === 'light'
+                ? lightTheme.hoverTextColor
+                : darkTheme.hoverTextColor
+              : theme === 'dark'
+              ? darkTheme.primaryTextColor
+              : lightTheme.primaryTextColor,
+          }}
         >
           Number
         </Label>

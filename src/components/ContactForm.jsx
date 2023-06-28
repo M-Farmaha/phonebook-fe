@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Form, Label, Input, Button } from './styled';
+import { Form, Label, Input, Button } from './StyledComponents';
 import { useAddContactMutation } from 'redux/contactsApi';
 import { toast } from 'react-hot-toast';
 import { ButtonAddLoader } from './Loaders';
-import { getToken } from 'redux/selectors';
+import { getTheme, getToken } from 'redux/selectors';
 import { useSelector } from 'react-redux';
+import { darkTheme, lightTheme } from 'themes';
 
 export const ContactForm = () => {
   const token = useSelector(getToken);
+  const theme = useSelector(getTheme);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isNumberFocused, setIsNumberFocused] = useState(false);
@@ -47,8 +49,16 @@ export const ContactForm = () => {
       autoComplete="off"
     >
       <Label
-        htmlFor={'name'}
-        style={{ color: isNameFocused && 'rgb(87, 88, 134)' }}
+        htmlFor="name"
+        style={{
+          color: isNameFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         Name
       </Label>
@@ -67,7 +77,15 @@ export const ContactForm = () => {
       />
       <Label
         htmlFor={'number'}
-        style={{ color: isNumberFocused && 'rgb(87, 88, 134)' }}
+        style={{
+          color: isNumberFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         Number
       </Label>

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LinkStyled, Section } from '../components/styled';
+import { LinkStyled, Section } from '../components/StyledComponents';
 import { RegisterForm } from 'components/RegisterForm';
 import { Context } from 'components/Layout';
 

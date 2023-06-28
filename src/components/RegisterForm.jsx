@@ -11,12 +11,16 @@ import {
   ShowPasswordIcon,
   SecureButton,
   HidePasswordIcon,
-} from './styled';
+} from './StyledComponents';
 import { ButtonAddLoader } from './Loaders';
 import { Context } from './Layout';
+import { darkTheme, lightTheme } from 'themes';
+import { useSelector } from 'react-redux';
+import { getTheme } from 'redux/selectors';
 
 export const RegisterForm = () => {
   const { handleRedirect } = useContext(Context);
+  const theme = useSelector(getTheme);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -54,7 +58,15 @@ export const RegisterForm = () => {
     >
       <Label
         htmlFor={'name'}
-        style={{ color: isNameFocused && 'rgb(87, 88, 134)' }}
+        style={{
+          color: isNameFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         Name
       </Label>
@@ -74,7 +86,15 @@ export const RegisterForm = () => {
       />
       <Label
         htmlFor={'email'}
-        style={{ color: isEmailFocused && 'rgb(87, 88, 134)' }}
+        style={{
+          color: isEmailFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         E-mail Address
       </Label>
@@ -92,7 +112,15 @@ export const RegisterForm = () => {
       />
       <Label
         htmlFor={'password'}
-        style={{ color: isPasswordFocused && 'rgb(87, 88, 134)' }}
+        style={{
+          color: isPasswordFocused
+            ? theme === 'light'
+              ? lightTheme.hoverTextColor
+              : darkTheme.hoverTextColor
+            : theme === 'dark'
+            ? darkTheme.primaryTextColor
+            : lightTheme.primaryTextColor,
+        }}
       >
         Password
       </Label>

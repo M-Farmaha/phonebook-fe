@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { filterReducer, tokenReducer } from './slice';
+import { filterReducer, themeReducer, tokenReducer } from './slice';
 import { contactsApi } from './contactsApi';
 import { authApi } from './authApi';
 
@@ -17,6 +17,7 @@ import storage from 'redux-persist/lib/storage';
 import persistStore from 'redux-persist/es/persistStore';
 
 const reducer = combineReducers({
+  theme: themeReducer,
   filter: filterReducer,
   token: tokenReducer,
   [contactsApi.reducerPath]: contactsApi.reducer,

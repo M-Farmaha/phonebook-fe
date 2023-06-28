@@ -2,7 +2,7 @@ import toast from 'react-hot-toast';
 
 import { useGetContactsQuery } from 'redux/contactsApi';
 import { ContactItem } from './ContactItem';
-import { ContactListWrap } from './styled';
+import { ContactListWrap } from './StyledComponents';
 
 import { useSelector } from 'react-redux';
 import { getFilter, getToken } from 'redux/selectors';
