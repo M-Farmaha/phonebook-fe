@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Context } from './Layout';
 import {
   NavList,
@@ -13,7 +13,7 @@ import {
 } from './StyledComponents';
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken } from 'redux/selectors';
-import { useGetCurrentUserQuery, useLogoutUserMutation } from 'redux/authApi';
+import { useLogoutUserMutation } from 'redux/authApi';
 import { toast } from 'react-hot-toast';
 import { setToken } from 'redux/slice';
 import { ButtonAddLoader } from './Loaders';
@@ -28,16 +28,9 @@ export const AppBar = () => {
   const [logoutUser] = useLogoutUserMutation();
 
   const token = useSelector(getToken);
-  const currentUser = useGetCurrentUserQuery(token);
 
   const dispatch = useDispatch();
   const location = useLocation();
-
-  useEffect(() => {
-    if (currentUser.status === 'rejected') {
-      dispatch(setToken(null));
-    }
-  }, [currentUser, dispatch]);
 
   const handleClick = (e, path) => {
     e.preventDefault();

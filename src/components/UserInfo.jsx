@@ -14,6 +14,7 @@ import { getRandomColor } from 'getRandomColor';
 
 export const UserInfo = () => {
   const token = useSelector(getToken);
+
   const currentUser = useGetCurrentUserQuery(token);
   const { data } = useGetContactsQuery(token);
 
