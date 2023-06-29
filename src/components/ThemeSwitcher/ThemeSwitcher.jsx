@@ -20,7 +20,7 @@ export const ThemeSwitcher = () => {
           className="dn"
           id="dn"
           checked={theme === 'dark'}
-          onClick={handleThemeToggle}
+          onChange={handleThemeToggle}
         />
         <label htmlFor="dn" className="toggle">
           <span className="toggle__handler">

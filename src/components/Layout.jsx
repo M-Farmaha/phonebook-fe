@@ -75,7 +75,7 @@ export const Layout = () => {
               },
             }}
           />
-          <main>
+          <>
             <Outlet />
             {isModalOpen && (
               <ContactModal
@@ -84,7 +84,7 @@ export const Layout = () => {
               />
             )}
             {isModalOpen ? <ModalBlurOverlayIn /> : <ModalBlurOverlayOut />}
-          </main>
+          </>
         </Context.Provider>
       </ThemeProvider>
     </>

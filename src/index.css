@@ -1,5 +1,9 @@
 @import-normalize;
 
+html {
+
+    min-width: 340px;
+}
 
 body {
     font-family: "Montserrat", sans-serif;

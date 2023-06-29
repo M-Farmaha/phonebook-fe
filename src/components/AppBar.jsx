@@ -97,6 +97,7 @@ export const AppBar = () => {
                 <NavLinkStyled
                   onClick={e => handleClick(e, '/register')}
                   to="/register"
+                  style={{ justifyContent: 'right' }}
                 >
                   Sign Up
                 </NavLinkStyled>
@@ -105,6 +106,7 @@ export const AppBar = () => {
                 <NavLinkStyled
                   onClick={e => handleClick(e, '/login')}
                   to="/login"
+                  style={{ justifyContent: 'right' }}
                 >
                   Sign In
                 </NavLinkStyled>

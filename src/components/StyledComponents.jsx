@@ -56,12 +56,20 @@ export const ModalBobyBlur = keyframes`
   }
 `;
 
+export const Section = styled.div`
+  text-align: center;
+  color: ${props => props.theme.primaryTextColor};
+  padding-bottom: 50px;
+
+  transition: ${props => props.theme.transition};
+`;
+
 export const Header = styled.header`
   height: 80px;
   top: 0;
   left: 0;
   position: sticky;
-  z-index: 9999;
+  z-index: 8888;
   background-color: ${props => props.theme.headerBG};
   backdrop-filter: blur(10px);
   box-shadow: ${props => props.theme.headerShadow};
@@ -70,11 +78,13 @@ export const Header = styled.header`
 `;
 
 export const NavWrap = styled.nav`
-  height: 100%;
-  max-width: 440px;
-  padding: 0px 20px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 440px;
+  height: 100%;
+
+  padding: 0px 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,13 +102,13 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li`
   height: 100%;
-  min-width: 65px;
+  min-width: 66px;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
   height: 100%;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
 
   color: ${props => props.theme.primaryTextColor};
@@ -126,14 +136,6 @@ export const LinkStyled = styled(Link)`
   &:hover {
     color: ${props => props.theme.hoverTextColor};
   }
-`;
-
-export const Section = styled.div`
-  text-align: center;
-  color: ${props => props.theme.primaryTextColor};
-  padding-bottom: 50px;
-
-  transition: ${props => props.theme.transition};
 `;
 
 export const TitleWrap = styled.div`
@@ -340,7 +342,6 @@ export const ContactListWrap = styled.ul`
   backdrop-filter: blur(8px);
   border-radius: 10px;
 
-  width: calc(100vw - 40px);
   max-width: 440px;
   display: flex;
   margin-left: auto;
@@ -549,7 +550,7 @@ export const ModalWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: 340px;
   border-radius: 10px;
   border-style: outset;
   border-width: 1px;
