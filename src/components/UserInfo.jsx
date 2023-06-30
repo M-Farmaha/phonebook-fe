@@ -11,9 +11,13 @@ import {
 } from './StyledComponents';
 import { useGetContactsQuery } from 'redux/contactsApi';
 import { getRandomColor } from 'getRandomColor';
+import { useContext } from 'react';
+import { Context } from './Layout';
+import { ButtonUserLoader } from './Loaders';
 
 export const UserInfo = () => {
   const token = useSelector(getToken);
+  const { setUserInfo, openModal } = useContext(Context);
 
   const currentUser = useGetCurrentUserQuery(token);
   const { data } = useGetContactsQuery(token);
@@ -32,10 +36,19 @@ export const UserInfo = () => {
                 backgroundColor: getRandomColor(currentUser?.data?.name),
               }}
               type="button"
+              disabled={!currentUser.isSuccess}
+              onClick={() => {
+                setUserInfo(currentUser?.data);
+                openModal();
+              }}
             >
               {' '}
               <ContactInfoButtonFilter>
-                {currentUser?.data?.name.slice(0, 1).toUpperCase()}
+                {currentUser.isSuccess ? (
+                  currentUser?.data?.name.slice(0, 1).toUpperCase()
+                ) : (
+                  <ButtonUserLoader />
+                )}
               </ContactInfoButtonFilter>
             </ContactInfoButton>
             <UserInfoTextSpan>{currentUser?.data?.name}</UserInfoTextSpan>

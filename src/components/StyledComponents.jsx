@@ -472,6 +472,7 @@ export const ContactInfoButton = styled.button`
   font-weight: 700;
 
   color: ${props => props.theme.alternativeTextColor};
+  filter: contrast(1);
 
   transition: ${props => props.theme.transition};
 
@@ -480,7 +481,12 @@ export const ContactInfoButton = styled.button`
     cursor: pointer;
     outline: none;
 
-    filter: contrast(1.3);
+    filter: contrast(${props => props.theme.contrastFocus});
+  }
+
+  &:disabled {
+    cursor: default;
+    filter: contrast(1);
   }
 `;
 
@@ -516,14 +522,8 @@ export const ContactInfoButtonInModal = styled.button`
 
   color: ${props => props.theme.alternativeTextColor};
 
-  transition: ${props => props.theme.transition};
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    outline: none;
-
-    filter: contrast(1.1);
+  &:disabled {
+    cursor: default;
   }
 `;
 
@@ -560,4 +560,31 @@ export const ModalWrap = styled.div`
   box-shadow: rgba(31, 39, 64, 0.1) 4px 2px 20px 0px;
 
   transition: ${props => props.theme.transition};
+`;
+
+export const UserModalTextWrap = styled.div`
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const UserModalText = styled.p`
+  font-weight: 700;
+  color: ${props => props.theme.primaryTextColor};
+
+  transition: ${props => props.theme.transition};
+`;
+
+export const UserModalTextSpan = styled.span`
+  max-width: 200px;
+  font-weight: 400;
+
+  hyphens: manual;
+  overflow-wrap: break-word;
 `;

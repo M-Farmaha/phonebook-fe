@@ -8,16 +8,16 @@ import { useSelector } from 'react-redux';
 import { Context } from './Layout';
 import { darkTheme, lightTheme } from 'themes';
 
-export const ContactEditForm = ({ userInModal }) => {
+export const ContactEditForm = ({ contactInfo }) => {
   const token = useSelector(getToken);
   const theme = useSelector(getTheme);
-  const { toggleModal } = useContext(Context);
+  const { closeModal } = useContext(Context);
 
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isNumberFocused, setIsNumberFocused] = useState(false);
 
-  const [name, setName] = useState(userInModal.name);
-  const [number, setNumber] = useState(userInModal.number);
+  const [name, setName] = useState(contactInfo.name);
+  const [number, setNumber] = useState(contactInfo.number);
 
   const [editContact, { isLoading, isSuccess }] = useEditContactMutation();
 
@@ -25,16 +25,16 @@ export const ContactEditForm = ({ userInModal }) => {
     isLoading ||
     !name ||
     !number ||
-    (name.trim() === userInModal.name && number.trim() === userInModal.number);
+    (name.trim() === contactInfo.name && number.trim() === contactInfo.number);
 
   useEffect(() => {
-    if (isSuccess) toggleModal();
-  }, [isSuccess, toggleModal]);
+    if (isSuccess) closeModal();
+  }, [isSuccess, closeModal]);
 
   const handleSubmit = e => {
     e.preventDefault();
     toast.promise(
-      editContact({ id: userInModal.id, body: { name, number }, token }),
+      editContact({ id: contactInfo.id, body: { name, number }, token }),
       {
         loading: `Editing...`,
         success: `Contact edited!`,

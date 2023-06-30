@@ -20,7 +20,7 @@ import { Context } from './Layout';
 export const ContactItem = ({ contact }) => {
   const token = useSelector(getToken);
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
-  const { toggleModal } = useContext(Context);
+  const { setContactInfo, openModal } = useContext(Context);
 
   const handleDeleteContact = () => {
     toast.promise(deleteContact({ id: contact.id, token }), {
@@ -37,7 +37,8 @@ export const ContactItem = ({ contact }) => {
           type="button"
           style={{ backgroundColor: getRandomColor(contact.name) }}
           onClick={() => {
-            toggleModal(contact);
+            setContactInfo(contact);
+            openModal();
           }}
         >
           <ContactInfoButtonFilter>

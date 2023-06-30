@@ -9,12 +9,15 @@ import {
   ModalBlurOverlayIn,
   ModalBlurOverlayOut,
 } from '../components/BlurOverlay';
-import { ContactModal } from './ContactModal';
+
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { getTheme } from 'redux/selectors';
 import { darkTheme, lightTheme } from 'themes';
 import { GlobalStyles } from 'components/GlobalStyles';
+import { UserModalContent } from './UserModalContent';
+import { Modal } from './Modal';
+import { ContactModalContent } from './ContactModalContent copy';
 
 export const Context = createContext();
 
@@ -22,7 +25,8 @@ export const Layout = () => {
   const navigate = useNavigate();
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userInModal, setUserInModal] = useState(null);
+  const [contactInfo, setContactInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   const theme = useSelector(getTheme);
 
@@ -34,9 +38,14 @@ export const Layout = () => {
     }, 300);
   };
 
-  const toggleModal = user => {
-    setUserInModal(user);
-    setIsModalOpen(prev => !prev);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setContactInfo(null);
+    setUserInfo(null);
   };
 
   return (
@@ -47,8 +56,10 @@ export const Layout = () => {
           value={{
             handleRedirect,
             shouldRedirect,
-            isModalOpen,
-            toggleModal,
+            openModal,
+            closeModal,
+            setContactInfo,
+            setUserInfo,
           }}
         >
           <AppBar />
@@ -78,10 +89,12 @@ export const Layout = () => {
           <>
             <Outlet />
             {isModalOpen && (
-              <ContactModal
-                toggleModal={toggleModal}
-                userInModal={userInModal}
-              />
+              <Modal closeModal={closeModal}>
+                {contactInfo && (
+                  <ContactModalContent contactInfo={contactInfo} />
+                )}
+                {userInfo && <UserModalContent userInfo={userInfo} />}
+              </Modal>
             )}
             {isModalOpen ? <ModalBlurOverlayIn /> : <ModalBlurOverlayOut />}
           </>

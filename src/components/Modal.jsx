@@ -2,18 +2,14 @@ import { useEffect } from 'react';
 import {
   CloseIcon,
   ContactButton,
-  ContactInfoButtonFilter,
-  ContactInfoButtonInModal,
   ModalOverlay,
   ModalWrap,
 } from './StyledComponents';
-import { ContactEditForm } from './ContactEditForm';
-import { getRandomColor } from 'getRandomColor';
 
-export const ContactModal = ({ toggleModal, userInModal }) => {
+export const Modal = ({ closeModal, children }) => {
   useEffect(() => {
     const handlePressESC = e => {
-      if (e.code === 'Escape') toggleModal();
+      if (e.code === 'Escape') closeModal();
     };
 
     window.addEventListener('keydown', handlePressESC);
@@ -23,10 +19,10 @@ export const ContactModal = ({ toggleModal, userInModal }) => {
       window.removeEventListener('keydown', handlePressESC);
       document.body.classList.remove('modal-open');
     };
-  }, [toggleModal]);
+  }, [closeModal]);
 
   const handleOverlayClick = e => {
-    if (e.target === e.currentTarget) toggleModal();
+    if (e.target === e.currentTarget) closeModal();
   };
 
   return (
@@ -35,23 +31,12 @@ export const ContactModal = ({ toggleModal, userInModal }) => {
         <ModalWrap style={{ position: 'relative' }}>
           <ContactButton
             type="button"
-            id={userInModal.id}
             style={{ position: 'absolute', top: '10px', right: '10px' }}
-            onClick={toggleModal}
+            onClick={closeModal}
           >
             <CloseIcon />
           </ContactButton>
-          <ContactInfoButtonInModal
-            type="button"
-            style={{
-              backgroundColor: getRandomColor(userInModal.name),
-            }}
-          >
-            <ContactInfoButtonFilter>
-              {userInModal.name.slice(0, 1).toUpperCase()}
-            </ContactInfoButtonFilter>
-          </ContactInfoButtonInModal>
-          <ContactEditForm userInModal={userInModal} />
+          {children}
         </ModalWrap>
       </ModalOverlay>
     </>

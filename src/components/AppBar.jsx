@@ -21,7 +21,7 @@ import { useLocation } from 'react-router-dom';
 import { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
 
 export const AppBar = () => {
-  const { handleRedirect, isModalOpen, toggleModal } = useContext(Context);
+  const { handleRedirect, closeModal } = useContext(Context);
 
   const [isLoading, setisLoading] = useState(false);
 
@@ -41,7 +41,6 @@ export const AppBar = () => {
 
   const handleLogOutClick = async e => {
     e.preventDefault();
-    if (isModalOpen) toggleModal();
     setisLoading(true);
     try {
       await logoutUser(token);
@@ -50,6 +49,7 @@ export const AppBar = () => {
         dispatch(setToken(null));
       }, 300);
       toast.success(`Logged out`);
+      closeModal();
     } catch (error) {
       toast.error(`Something went wrong`);
     }

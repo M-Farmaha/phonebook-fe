@@ -2,6 +2,8 @@ export const lightTheme = {
   transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDisabled: 'all 0ms cubic-bezier(0.4, 0, 0.2, 1)',
 
+  contrastFocus: 1.2,
+
   primaryTextColor: 'rgb(102, 105, 150)',
   disabledTextColor: 'rgb(175, 175, 200)',
   hoverTextColor: 'rgb(49, 49, 98)',
@@ -42,6 +44,8 @@ export const lightTheme = {
 
 export const darkTheme = {
   ...lightTheme,
+
+  contrastFocus: 3,
 
   primaryTextColor: 'rgb(177, 193, 226)',
   disabledTextColor: 'rgb(75, 83, 95)',

@@ -37,6 +37,23 @@ export const ButtonAddLoader = () => {
   );
 };
 
+export const ButtonUserLoader = () => {
+  const theme = useSelector(getTheme);
+  return (
+    <RotatingLines
+      strokeColor={
+        theme === 'light'
+          ? lightTheme.alternativeTextColor
+          : darkTheme.alternativeTextColor
+      }
+      strokeWidth="5"
+      animationDuration="0.75"
+      width="24"
+      visible={true}
+    />
+  );
+};
+
 export const ContactsLoader = () => {
   const theme = useSelector(getTheme);
   return (
