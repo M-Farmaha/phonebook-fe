@@ -5,16 +5,12 @@ import { AiFillEyeInvisible } from 'react-icons/ai';
 import { NavLink, Link } from 'react-router-dom';
 
 export const Blur = keyframes`
-  0% {
-    backdrop-filter: blur(40px);
-  }
-
-  100% {
-    backdrop-filter: blur(0px);
-  }
+  0% {opacity: 1}
+  100% {opacity: 0.1}
 `;
 
 export const BlurDiv = styled.div`
+  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   left: 0;
@@ -26,16 +22,12 @@ export const BlurDiv = styled.div`
 `;
 
 export const ModalBlur = keyframes`
-  0% {
-    backdrop-filter: blur(10px);
-  }
-
-  100% {
-    backdrop-filter: blur(0px);
-  }
+  0% {opacity: 1}
+  100% {opacity: 0}
 `;
 
 export const ModalBlurDiv = styled.div`
+  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   left: 0;
@@ -46,7 +38,7 @@ export const ModalBlurDiv = styled.div`
   animation-duration: 250ms;
 `;
 
-export const ModalBobyBlur = keyframes`
+export const ModalBodyBlur = keyframes`
   0% {
     filter: blur(40px);
   }
@@ -539,7 +531,7 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   z-index: 999;
 
-  animation-name: ${ModalBobyBlur};
+  animation-name: ${ModalBodyBlur};
   animation-duration: 250ms;
 
   transition: ${props => props.theme.transition};
