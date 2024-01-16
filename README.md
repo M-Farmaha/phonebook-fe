@@ -1,10 +1,13 @@
 # Phonebook application
 
 ### Link to gh-pages
-https://m-farmaha.github.io/goit-react-hw-08-phonebook/
+https://m-farmaha.github.io/phonebook-fe/
 
 Welcome to personal contacts book on the web.
-CRUD backend interaction, error handling, routing, authentication and authorization, theme switching, quick notifications.
+
+After authorization, you'll have access to an interface where you can easily add, delete, and modify your personal contacts, securely storing them on a remote web server.
+
+Don't forget your password!
 
 ## Review
 
@@ -19,6 +22,9 @@ CRUD backend interaction, error handling, routing, authentication and authorizat
 
 - Modal window
 ![Modal window](./assets/ModalWindow.jpg)
+
+- Error page
+![Error window](./assets/ErrorPage.jpg)
 
 This is a repository that uses the following technologies:
 
